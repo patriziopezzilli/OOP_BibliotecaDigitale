@@ -1,6 +1,6 @@
 <snippet>
   <content>
-# Object Oriented Programming
+### Object Oriented Programming
 ### Team Member:
 - Patrizio Pezzilli   (Mat.227636)
 - Stefano Cortellessa (Mat.227630)
