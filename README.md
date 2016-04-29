@@ -6,7 +6,7 @@
 - Stefano Cortellessa (Mat.227630)
 - Luca Ferrari (Mat.229666)
 
-## Come muoversi nella Repository
+## Struttura Repository
 OOP_BibliotecaDigitale : root del progetto
 - src : questa directory conterrà il codice sorgente del progetto
 - doc : questa directory conterrà i documenti di design del progetto (in format pdf) 
