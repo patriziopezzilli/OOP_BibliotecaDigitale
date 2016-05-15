@@ -17,6 +17,33 @@ import javax.naming.NamingException;
  *
  */
 public class DataUtil {
+	
+	
+	public static String getUsername(String email) throws Exception {
+		
+		String nome = null;
+		
+		try{
+
+			 Database.connect();
+		        
+		        
+		           
+		         String condition="email='"+email+"'";
+		         
+		         ResultSet rs =Database.selectRecord("users",condition);
+		       
+		         while(rs.next()){ 
+		          nome= rs.getString("nome");
+		        	 
+		       }
+		                   
+		      }catch(NamingException e)
+		      {     
+		      } catch (SQLException e) {
+		      }
+		        return nome;  
+	}
 
     public static int checkUser(String email,String pass) throws Exception 
      {

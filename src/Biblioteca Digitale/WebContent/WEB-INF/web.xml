@@ -12,9 +12,17 @@
         <servlet-name>List_Title</servlet-name>
         <servlet-class>biblioteca.Servlet.List_Title</servlet-class>
     </servlet>
+      <servlet>
+        <servlet-name>Backoffice</servlet-name>
+        <servlet-class>biblioteca.Servlet.Backoffice</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Backoffice</servlet-name>
+        <url-pattern>/backoffice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>List_Title</servlet-name>

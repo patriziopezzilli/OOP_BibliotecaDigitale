@@ -76,7 +76,8 @@ public class Index extends HttpServlet{
 	            HttpSession s = SecurityLayer.checkSession(request);
 	            if (s != null) {
 	                data.put("session",s.getAttribute("username"));
-	                data.put("test",s.getAttribute("username"));
+	                String test= DataUtil.getUsername((String) s.getAttribute("username"));
+		 	        data.put("test", test);
 	                FreeMarker.process("list_title.html", data, response, getServletContext());
 	                
 	            } else {
@@ -99,7 +100,7 @@ public class Index extends HttpServlet{
 	                //load userid from user database
 	                SecurityLayer.createSession(request, email , userid);
 	                data.put("session",email);
-	                data.put("test",email);
+	                data.put("test", DataUtil.getUsername(email));
 	                FreeMarker.process("list_title.html", data, response, getServletContext());
 	           
 	               
@@ -130,7 +131,8 @@ public class Index extends HttpServlet{
 	            
 	           
 	                data.put("session",email);
-	                data.put("test",email);
+	                String test= DataUtil.getUsername((String) s.getAttribute("username"));
+		 	        data.put("test", test);
 
 	                FreeMarker.process("list_title.html", data, response, getServletContext());
 	                    

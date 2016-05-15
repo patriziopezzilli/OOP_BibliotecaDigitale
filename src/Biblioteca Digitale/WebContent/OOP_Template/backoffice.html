@@ -8,8 +8,8 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="OOP_Template/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="OOP_Template/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
 <body>
@@ -48,11 +48,14 @@
       </div>
       <div class="collection">
         <div href="#!" class="collection-item collection-header center">
-          <img src="img/admin_book.png" /></div>
+          <img src="OOP_Template/img/admin_book.png" /></div>
 
       </div>
 
       <ul class="collapsible" data-collapsible="accordion">
+      
+      <#if lista_opere ??>
+      <#list lista_opere as opera>
         <li>
           <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
           <div class="collapsible-body center">
@@ -65,96 +68,14 @@
           </div>
 
         </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
-          <div class="collapsible-body center">
-            <br />
-            <a class="waves-effect waves-light btn">Pubblica</a>
-            <a class="waves-effect waves-light btn">Elimina</a>
-            <a class="waves-effect waves-light btn">Vai all'opera</a>
-            <br />
-            <br />
-          </div>
-
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
-          <div class="collapsible-body center">
-            <br />
-            <a class="waves-effect waves-light btn">Pubblica</a>
-            <a class="waves-effect waves-light btn">Elimina</a>
-            <a class="waves-effect waves-light btn">Vai all'opera</a>
-            <br />
-            <br />
-          </div>
-
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
-          <div class="collapsible-body center">
-            <br />
-            <a class="waves-effect waves-light btn">Pubblica</a>
-            <a class="waves-effect waves-light btn">Elimina</a>
-            <a class="waves-effect waves-light btn">Vai all'opera</a>
-            <br />
-            <br />
-          </div>
-
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
-          <div class="collapsible-body center">
-            <br />
-            <a class="waves-effect waves-light btn">Pubblica</a>
-            <a class="waves-effect waves-light btn">Elimina</a>
-            <a class="waves-effect waves-light btn">Vai all'opera</a>
-            <br />
-            <br />
-          </div>
-
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
-          <div class="collapsible-body center">
-            <br />
-            <a class="waves-effect waves-light btn">Pubblica</a>
-            <a class="waves-effect waves-light btn">Elimina</a>
-            <a class="waves-effect waves-light btn">Vai all'opera</a>
-            <br />
-            <br />
-          </div>
-
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
-          <div class="collapsible-body center">
-            <br />
-            <a class="waves-effect waves-light btn">Pubblica</a>
-            <a class="waves-effect waves-light btn">Elimina</a>
-            <a class="waves-effect waves-light btn">Vai all'opera</a>
-            <br />
-            <br />
-          </div>
-
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
-          <div class="collapsible-body center">
-            <br />
-            <a class="waves-effect waves-light btn">Pubblica</a>
-            <a class="waves-effect waves-light btn">Elimina</a>
-            <a class="waves-effect waves-light btn">Vai all'opera</a>
-            <br />
-            <br />
-          </div>
-
-        </li>
+        </#list>
+       </#if>
 
       </ul>
 
       <div class="collection">
         <div href="#!" class="collection-item collection-header center">
-          <img src="img/add.png" style="height:3em; weight:3em;" /></div>
+          <img src="OOP_Template/img/add.png" style="height:3em; weight:3em;" /></div>
 
       </div>
     </div>
@@ -169,7 +90,7 @@
       </div>
       <div class="collection">
         <div href="#!" class="collection-item collection-header center">
-          <img src="img/admin_user.png" /></div>
+          <img src="OOP_Template/img/admin_user.png" /></div>
 
       </div>
 
@@ -341,7 +262,7 @@
 
       <div class="collection">
         <div href="#!" class="collection-item collection-header center">
-          <img src="img/add.png" style="height:3em; weight:3em;" /></div>
+          <img src="OOP_Template/img/add.png" style="height:3em; weight:3em;" /></div>
 
       </div>
 
@@ -351,8 +272,8 @@
   </div>
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+  <script src="OOP_Template/js/materialize.js"></script>
+  <script src="OOP_Template/js/init.js"></script>
 
 </body>
 

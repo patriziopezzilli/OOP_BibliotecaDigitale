@@ -30,7 +30,8 @@ import javax.servlet.http.HttpSession;
  * @author Patrizio
  *
  */
-public class List_Title extends HttpServlet {
+public class Backoffice extends HttpServlet {
+	
 	 Map data= new HashMap();
      
 	    private void action_error(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -62,12 +63,7 @@ public class List_Title extends HttpServlet {
 	    	 HttpSession s = SecurityLayer.checkSession(request);
 	    	 if(s!=null){
 	    		 
-	    		 if(!isNull(request.getParameter("messaggio"))){
-	    			 data.put("session","");
-	    	         SecurityLayer.disposeSession(request);
-	    	         FreeMarker.process("index.html", data , response, getServletContext());
-	    		 }
-	    		 
+	    	
 	    		 List<Opera> lista_opere= new ArrayList<Opera>();
 	    		 
 	    		 /* inserisco lista in lista_opere */
@@ -79,7 +75,7 @@ public class List_Title extends HttpServlet {
 	    		 String test= DataUtil.getUsername((String) s.getAttribute("username"));
 	 	        data.put("test", test);
 	 	        data.put("lista_opere", lista_opere);
-	 	        FreeMarker.process("list_title.html", data, response, getServletContext());
+	 	        FreeMarker.process("backoffice.html", data, response, getServletContext());
 	    	 }else 	 FreeMarker.process("index.html", data, response, getServletContext());
 
 	    	 
@@ -139,6 +135,8 @@ public class List_Title extends HttpServlet {
 	    private List<Opera> returnList() throws Exception{
 	    	
 	    	List<Opera> temp= new ArrayList<Opera>();
+	    	
+
 	    	try{
 
 				 Database.connect();

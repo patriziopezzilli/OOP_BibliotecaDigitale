@@ -22,7 +22,14 @@
         </li>
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li>      <i class="material-icons right">settings</i>
+        <li>     <a href="backoffice"> <i class="material-icons right">settings</i></a>
+         <li> 
+          <form id="my_form" method="post">
+          <input type="hidden" name="messaggio" value="messaggio">
+          <a href="#" onclick="document.getElementById('my_form').submit();">
+           <i class="material-icons right">clear</i> 
+           </a>
+            </form>
 
         </li>
 
@@ -57,11 +64,14 @@
 
   <div class="container">
 
+
+
     <ul class="collection">
+    <#if lista_opere ??>
+    <#list lista_opere as opera> 
             <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-            <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-            <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-            <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+     </#list>
+     </#if>
           </ul>
 
           </div>
