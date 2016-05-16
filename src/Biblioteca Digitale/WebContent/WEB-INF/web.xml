@@ -16,9 +16,17 @@
         <servlet-name>Backoffice</servlet-name>
         <servlet-class>biblioteca.Servlet.Backoffice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Insert_pub</servlet-name>
+        <servlet-class>biblioteca.Servlet.Insert_pub</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Insert_pub</servlet-name>
+        <url-pattern>/insert_pub</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Backoffice</servlet-name>
@@ -28,6 +36,16 @@
         <servlet-name>List_Title</servlet-name>
         <url-pattern>/list_title</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <description></description>
+        <display-name>Logout</display-name>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>biblioteca.Servlet.Logout</servlet-class>
+   </servlet>
+   <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+   </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -80,7 +80,8 @@ public class List_Title extends HttpServlet {
 	 	        data.put("test", test);
 	 	        data.put("lista_opere", lista_opere);
 	 	        FreeMarker.process("list_title.html", data, response, getServletContext());
-	    	 }else 	 FreeMarker.process("index.html", data, response, getServletContext());
+	    	 }else 	
+	    		 FreeMarker.process("index.html", data, response, getServletContext());
 
 	    	 
 	       
