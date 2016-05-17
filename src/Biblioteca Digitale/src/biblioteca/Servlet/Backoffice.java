@@ -141,10 +141,10 @@ public class Backoffice extends HttpServlet {
 
 				 Database.connect();
 			        
-			         ResultSet rs =Database.selectRecord("pub","");
+			         ResultSet rs =Database.selectRecord("pub","1");
 			       
 			         while(rs.next()){ 
-			        	 int id= rs.getInt("id");
+			        	 int id= rs.getInt("id_op");
 			        	String nome= rs.getString("nome");
 			        	Date data= rs.getDate("data");
 			        	String autore=rs.getString("autore");

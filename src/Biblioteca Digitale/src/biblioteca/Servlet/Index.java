@@ -159,4 +159,4 @@ public class Index extends HttpServlet{
 	        return "Servlet per la gestione della home";
 	    }
 
-		}
+	}
