@@ -11,7 +11,8 @@
         </li>
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li>     <a href="backoffice"> <i class="material-icons right">settings</i></a>
+        <li>     <a href="userprofile"> <i class="material-icons right">account_box</i></a>
+          <a href="backoffice"> <i class="material-icons right">settings</i></a>
          <li> <a href="Logout"><i class="material-icons right">clear</i>  </a>
             </form>
 
@@ -49,17 +50,16 @@
   <div class="container">
 
 
-<!--  VERSIONE  LISTA   -->
     <ul class="collection">
+   
     <#if lista_opere ??>
-    
-    <#list lista_opere as opera> 
-            <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+    <#list lista_opere as Opera> 
+            <li class="collection-item dismissable"><div>${Opera.nome}<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
      </#list>
-     
      </#if>
+     
           </ul>
-<!--  VERSIONE  LISTA   -->
+
 
 
 

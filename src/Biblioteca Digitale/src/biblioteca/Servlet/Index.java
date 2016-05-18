@@ -3,15 +3,19 @@
  */
 package biblioteca.Servlet;
 
+import biblioteca.Model.Opera;
 import biblioteca.Util.DataUtil;
 import static biblioteca.Util.DataUtil.crypt;
 import biblioteca.Util.Database;
 import biblioteca.Util.FreeMarker;
 import biblioteca.Util.SecurityLayer;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import static java.util.Objects.isNull;
 import java.util.logging.Level;
@@ -54,6 +58,22 @@ public class Index extends HttpServlet{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
+					List<Opera> lista_opere= new ArrayList<Opera>();
+		    		 
+		    		 /* inserisco lista in lista_opere */
+		    		 
+		    		 try {
+						lista_opere= returnList();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		    		 
+		    		 /* lo passo a data */
+		    		 
+		    		
+		 	        data.put("lista_opere", lista_opere);
 		 	        data.put("test", test);
 	                FreeMarker.process("list_title.html", data, response, getServletContext());
 	                
@@ -103,6 +123,22 @@ public class Index extends HttpServlet{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+                
+                List<Opera> lista_opere= new ArrayList<Opera>();
+	    		 
+	    		 /* inserisco lista in lista_opere */
+	    		 
+	    		 try {
+					lista_opere= returnList();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	    		 
+	    		 /* lo passo a data */
+	    		 
+	    		
+	 	        data.put("lista_opere", lista_opere);
                 FreeMarker.process("list_title.html", data, response, getServletContext());
            
                
@@ -158,5 +194,37 @@ public class Index extends HttpServlet{
 	    public String getServletInfo() {
 	        return "Servlet per la gestione della home";
 	    }
+ private List<Opera> returnList() throws Exception{
+	    	
+	    	List<Opera> temp= new ArrayList<Opera>();
+	    	
 
-		}
+	    	try{
+
+				 Database.connect();
+			        
+			         ResultSet rs =Database.selectRecord("pub","1");
+			       
+			         while(rs.next()){ 
+			        	 int id= rs.getInt("id_op");
+			        	String nome= rs.getString("nome");
+			        	Date data= rs.getDate("data");
+			        	String autore=rs.getString("autore");
+			        	String lingua=rs.getString("lingua");
+			        	String utente=rs.getString("user");
+			        	 
+			        	Opera tempopera= new Opera (id,nome,data,autore,lingua,utente);
+			        	temp.add(tempopera);
+			       }
+			           
+			         Database.close();
+			      }catch(NamingException e)
+			      {     
+			      } catch (SQLException e) {
+			      }
+	    	
+			        return temp; 
+	    	
+	    	
+	    }
+	}

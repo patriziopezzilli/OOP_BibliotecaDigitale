@@ -5,6 +5,7 @@ package biblioteca.Servlet;
 
 import static java.util.Objects.isNull;
 import biblioteca.Model.Opera;
+import biblioteca.Model.Utente;
 import biblioteca.Util.DataUtil;
 import biblioteca.Util.Database;
 import biblioteca.Util.FreeMarker;
@@ -63,18 +64,102 @@ public class Backoffice extends HttpServlet {
 	    	 HttpSession s = SecurityLayer.checkSession(request);
 	    	 if(s!=null){
 	    		 
+	    		 
+	    		 /**
+	    		  * 
+	    		  * 
+	    		  * 
+	    		  * Gestione Opere
+	    		  * 
+	    		  * 
+	    		  * 
+	    		  */
+	    		 
+	    		 if(!isNull(request.getParameter("elimina"))){
+	    			 
+	    			 String opera= request.getParameter("opera");
+	    			 Database.connect();
+	    			 Database.deleteRecord("pub", "nome='"+opera+"'");
+	    			 Database.close();
+	    		 }
+	    		 
+	    		 
+	    		 /**
+	    		  * 
+	    		  * 
+	    		  * 
+	    		  * Gestione Utenza
+	    		  * 
+	    		  * 
+	    		  * 
+	    		  */
+	    		 
+	    		 if(!isNull(request.getParameter("avanzato"))){
+	    			 
+	    			 String Utente= request.getParameter("utente");
+	    			 Database.connect();
+	    			 Map<String, Object> temp= new HashMap<String,Object>();
+	    			 temp.put("gruppo",'7');   //Come da accordo con DB
+	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
+	    			 Database.close();
+	    		 }
+	    		 
+	    		 if(!isNull(request.getParameter("aquisitore"))){
+	    			 
+	    			 String Utente= request.getParameter("utente");
+	    			 Database.connect();
+	    			 Map<String, Object> temp= new HashMap<String,Object>();
+	    			 temp.put("gruppo",'5');
+	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
+	    			 Database.close();
+	    		 }
+	    		 
+	    		 if(!isNull(request.getParameter("trascrittore"))){
+	    			 
+	    			 String Utente= request.getParameter("utente");
+	    			 Database.connect();
+	    			 Map<String, Object> temp= new HashMap<String,Object>();
+	    			 temp.put("gruppo",'3');
+	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
+	    			 Database.close();
+	    		 }
+	    		 
+	    		 if(!isNull(request.getParameter("revisore_a"))){
+	    			 
+	    			 String Utente= request.getParameter("utente");
+	    			 Database.connect();
+	    			 Map<String, Object> temp= new HashMap<String,Object>();
+	    			 temp.put("gruppo",'6');
+	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
+	    			 Database.close();
+	    		 }
+	    		 
+	    		 if(!isNull(request.getParameter("revisore_t"))){
+	    			 
+	    			 String Utente= request.getParameter("utente");
+	    			 Database.connect();
+	    			 Map<String, Object> temp= new HashMap<String,Object>();
+	    			 temp.put("gruppo",'4');
+	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
+	    			 Database.close();
+	    		 }
 	    	
 	    		 List<Opera> lista_opere= new ArrayList<Opera>();
-	    		 
+	    		 List<Utente> lista_utenti= new ArrayList<Utente>();
+
 	    		 /* inserisco lista in lista_opere */
 	    		 
 	    		 lista_opere= returnList();
-	    		 
+	    		 lista_utenti= returnListutenti();
 	    		 /* lo passo a data */
 	    		 
 	    		 String test= DataUtil.getUsername((String) s.getAttribute("username"));
 	 	        data.put("test", test);
 	 	        data.put("lista_opere", lista_opere);
+	 	       data.put("lista_utenti", lista_utenti);
+	 	       
+	 	       
+	 	       
 	 	        FreeMarker.process("backoffice.html", data, response, getServletContext());
 	    	 }else 	 FreeMarker.process("index.html", data, response, getServletContext());
 
@@ -135,16 +220,17 @@ public class Backoffice extends HttpServlet {
 	    private List<Opera> returnList() throws Exception{
 	    	
 	    	List<Opera> temp= new ArrayList<Opera>();
-	    	
+
 
 	    	try{
 
 				 Database.connect();
 			        
-			         ResultSet rs =Database.selectRecord("pub","");
+			         ResultSet rs =Database.selectRecord("pub","1");
+			         
 			       
 			         while(rs.next()){ 
-			        	 int id= rs.getInt("id");
+			        	 int id= rs.getInt("id_op");
 			        	String nome= rs.getString("nome");
 			        	Date data= rs.getDate("data");
 			        	String autore=rs.getString("autore");
@@ -164,4 +250,41 @@ public class Backoffice extends HttpServlet {
 	    	
 	    	
 	    }
+	    
+	    	private List<Utente> returnListutenti() throws Exception{
+	    	
+	    	List<Utente> temp2= new ArrayList<Utente>();
+
+
+	    	try{
+
+				 Database.connect();
+			        
+			         ResultSet ss =Database.selectRecord("users","1");
+			         
+			         while(ss.next()){ 
+			        	 
+				        String email= ss.getString("email");
+
+			        	String nome= ss.getString("nome");
+			        	String cognome= ss.getString("cognome");
+			        	Date annonascita=ss.getDate("annonascita");
+			        	String citta=ss.getString("citta");
+			        	int gruppo=ss.getInt("gruppo");
+			        	 
+			        	Utente temputente= new Utente (email,nome,cognome,citta,annonascita,gruppo);
+			        	temp2.add(temputente);
+			       }
+			        
+			                   
+			      }catch(NamingException e)
+			      {     
+			      } catch (SQLException e) {
+			      }
+	    	
+			        return temp2; 
+	    	
+	    	
+	    }
+	
 	}

@@ -1,15 +1,6 @@
-/**
- * 
- */
 package biblioteca.Servlet;
 
-import biblioteca.Model.Opera;
-import biblioteca.Util.DataUtil;
 import static biblioteca.Util.DataUtil.crypt;
-import biblioteca.Util.Database;
-import biblioteca.Util.FreeMarker;
-import biblioteca.Util.SecurityLayer;
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,26 +11,27 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static java.util.Objects.isNull;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-/**
- * @author Patrizio
- *
- */
-public class Insert_pub extends HttpServlet{
+
+import biblioteca.Model.Opera;
+import biblioteca.Util.DataUtil;
+import biblioteca.Util.Database;
+import biblioteca.Util.FreeMarker;
+import biblioteca.Util.SecurityLayer;
+
+public class Insert_User extends HttpServlet{
 
 	 /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     
+    
 	    private void action_error(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	Map<String,Object> data= new HashMap<String,Object>();
 
@@ -57,12 +49,6 @@ public class Insert_pub extends HttpServlet{
 	        
 	      
 	    }
-	          
-	    
-	    
-	    
-	   
-	          
 	          
 	 /**
 	     * Caricamento pagina di Home
@@ -88,7 +74,7 @@ public class Insert_pub extends HttpServlet{
 						e.printStackTrace();
 					}
 		 	        data.put("test", test);
-	                FreeMarker.process("insert_pub.html", data, response, getServletContext());
+	                FreeMarker.process("aggiungipers.html", data, response, getServletContext());
 	                
 	            } else FreeMarker.process("index.html", data, response, getServletContext());
 	    
@@ -99,47 +85,49 @@ public class Insert_pub extends HttpServlet{
 	     @Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 	    	 HttpSession s = SecurityLayer.checkSession(request);
-	    	Map<String,Object> data= new HashMap<String,Object>();
+	    	 
+	    		Map<String,Object> data= new HashMap<String,Object>();
 
-	    	  String nome = request.getParameter("titolo");
+	    	  String email = request.getParameter("email");
+	    	  String password = request.getParameter("password");
+	    	  String nome = request.getParameter("nome");
+	    	  String cognome = request.getParameter("cognome");
+	    	  String annonascita= request.getParameter("annonascita");
+	    	  String citta= request.getParameter("citta");
+	    	  int gruppo= 1;
+
 	    	  
-	    	  //getting current date and time using Date class
-	          DateFormat df = new SimpleDateFormat("dd/MM/yy");
-	          Date dd = new Date();
-              String autore = request.getParameter("autore");
-              String numpagine = request.getParameter("numpagine");
-              String lingua = request.getParameter("lingua");
-              String user= (String) s.getAttribute("username");
-              
-              data.put("nome",nome);
-              data.put("data",df.format(dd));
-              data.put("autore",autore);
-              data.put("num_pagine",numpagine);
-              data.put("lingua",lingua);
-              data.put("user", user);
+             
+             data.put("email",email);
+             data.put("password", crypt(password));
+             data.put("nome",nome);
+             data.put("cognome",cognome);
+             data.put("annonascita",annonascita);
+             data.put("citta", citta);
+             data.put("gruppo", gruppo);
 
-              try {
+             try {
 				Database.connect();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-              
-             try {
-				Database.insertRecord("pub", data);
+             System.out.print(data.get("nome"));
+            try {
+				Database.insertRecord("users", data);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-             
-             try {
+            
+            try {
 				Database.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-             data.put("session",s.getAttribute("username"));
-             String test = null;
+            data.put("session",s.getAttribute("username"));
+            String test = null;
 				try {
 					test = DataUtil.getUsername((String) s.getAttribute("username"));
 				} catch (Exception e) {
@@ -181,8 +169,8 @@ public class Insert_pub extends HttpServlet{
 				
 				data.put("lista_opere", temp);
 	 	        data.put("test", test);
-             FreeMarker.process("list_title.html", data, response, getServletContext());
-             
+            FreeMarker.process("list_title.html", data, response, getServletContext());
+            
 	    }
 
 	    

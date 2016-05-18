@@ -31,10 +31,11 @@ import javax.servlet.http.HttpSession;
  *
  */
 public class List_Title extends HttpServlet {
-	 Map data= new HashMap();
      
 	    private void action_error(HttpServletRequest request, HttpServletResponse response) throws IOException {
-	        //assumiamo che l'eccezione sia passata tramite gli attributi della request
+	   	 Map data= new HashMap();
+
+	    	//assumiamo che l'eccezione sia passata tramite gli attributi della request
 	        //we assume that the exception has been passed using the request attributes
 	        Exception exception = (Exception) request.getAttribute("exception");
 	        String message;
@@ -58,27 +59,46 @@ public class List_Title extends HttpServlet {
 	     * @throws ServletException if a servlet-specific error occurs
 	     */
 	    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
-	    	
+	   	 Map<String,Object> data= new HashMap<String,Object>();
+
 	    	 HttpSession s = SecurityLayer.checkSession(request);
 	    	 if(s!=null){
-	    		 
-	    		 if(!isNull(request.getParameter("messaggio"))){
-	    			 data.put("session","");
-	    	         SecurityLayer.disposeSession(request);
-	    	         FreeMarker.process("index.html", data , response, getServletContext());
-	    		 }
-	    		 
-	    		 List<Opera> lista_opere= new ArrayList<Opera>();
-	    		 
+	    		
 	    		 /* inserisco lista in lista_opere */
 	    		 
-	    		 lista_opere= returnList();
+	    		 
+	    		List<Opera> temp= null;
+	 	    	try{
+
+	 				 Database.connect();
+	 			        
+	 			        ResultSet rs =Database.selectRecord("pub", "1");
+	 			        temp= new ArrayList<Opera>(); 
+	 			        
+	 			         while(rs.next()){ 
+	 			        	 int id= rs.getInt("id_op");
+	 			        	String nome= rs.getString("nome");
+	 			        	Date date= rs.getDate("data");
+	 			        	String autore=rs.getString("autore");
+	 			        	String lingua=rs.getString("lingua");
+	 			        	String utente=rs.getString("user");
+	 			        	 
+	 			     Opera tempopera= new Opera (id,nome,date,autore,lingua,utente);
+	 			     
+	 			        	temp.add(tempopera);
+	 			       }
+	 			      
+	 			    Database.close();
+	 			      }catch(NamingException e)
+	 			      {     
+	 			      } catch (SQLException e) {
+	 			      }
 	    		 
 	    		 /* lo passo a data */
 	    		 
 	    		 String test= DataUtil.getUsername((String) s.getAttribute("username"));
 	 	        data.put("test", test);
-	 	        data.put("lista_opere", lista_opere);
+	 	        data.put("lista_opere", temp);
 	 	        FreeMarker.process("list_title.html", data, response, getServletContext());
 	    	 }else 	
 	    		 FreeMarker.process("index.html", data, response, getServletContext());
@@ -136,35 +156,5 @@ public class List_Title extends HttpServlet {
 	        return "Short description";
 	    }// </editor-fold>
 
-	    
-	    private List<Opera> returnList() throws Exception{
-	    	
-	    	List<Opera> temp= new ArrayList<Opera>();
-	    	try{
-
-				 Database.connect();
-			        
-			         ResultSet rs =Database.selectRecord("pub","");
-			       
-			         while(rs.next()){ 
-			        	 int id= rs.getInt("id");
-			        	String nome= rs.getString("nome");
-			        	Date data= rs.getDate("data");
-			        	String autore=rs.getString("autore");
-			        	String lingua=rs.getString("lingua");
-			        	String utente=rs.getString("user");
-			        	 
-			        	Opera tempopera= new Opera (id,nome,data,autore,lingua,utente);
-			        	temp.add(tempopera);
-			       }
-			                   
-			      }catch(NamingException e)
-			      {     
-			      } catch (SQLException e) {
-			      }
-	    	
-			        return temp; 
-	    	
-	    	
-	    }
+	 
 	}

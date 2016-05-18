@@ -10,8 +10,8 @@ import java.sql.Date;
  */
 public class Utente {
 
-	 String usermail;
-	   public String nome;
+		String usermail;
+	    public String nome;
 	    String cognome;
 	    String citta;
 	    Date datanascita;

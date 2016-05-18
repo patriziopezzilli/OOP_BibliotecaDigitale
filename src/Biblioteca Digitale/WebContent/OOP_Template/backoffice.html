@@ -2,7 +2,7 @@
 <html lang="it">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title class="hoverable">Biblioteca Digitale</title>
 
@@ -41,242 +41,109 @@
 
 
   <div class="row">
- <div class="col s6">
-    <div class="col s6">
+  	
+ 		<div class="col s12">
+    		<div class="col s6">
 
-      <div class="collection">
-        <div href="#!" class="collection-item collection-header center">
-          <h5>Opere da pubblicare</h5></div>
+      			<div class="collection">
+        			<div href="#!" class="collection-item collection-header center">
+          				<h5>Opere da pubblicare</h5>
+          			</div>
 
-      </div>
-      <div class="collection">
-        <div href="#!" class="collection-item collection-header center">
-          <img src="OOP_Template/img/admin_book.png" /></div>
-
-      </div>
-
-      <ul class="collapsible" data-collapsible="accordion">
+      			</div>
+      			<div class="collection">
+        			<div href="#!" class="collection-item collection-header center">
+          				<img src="OOP_Template/img/admin_book.png" />
+          			</div>
+          		</div>
+          		<ul class="collapsible" data-collapsible="accordion">
       
-      <#if lista_opere ??>
-      <#list lista_opere as opera>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">bookmark_border</i>Opera</div>
-          <div class="collapsible-body center">
-            <br />
-            <a class="waves-effect waves-light btn">Pubblica</a>
-            <a class="waves-effect waves-light btn">Elimina</a>
-            <a class="waves-effect waves-light btn">Vai all'opera</a>
-            <br />
-            <br />
-          </div>
-
-        </li>
-        </#list>
-       </#if>
-
-      </ul>
-
-      <div class="collection">
-        <div href="#!" class="collection-item collection-header center">
-        <a href="insert_pub">  <img src="OOP_Template/img/add.png" style="height:3em; weight:3em;" /> </a></div>
-
-      </div>
-    </div>
-    </div>
-     <div class="col s6">
-    <div class="col s6">
-
-      <!-- SECONDO COL S6 -->
-
-      <div class="collection">
-        <div href="#!" class="collection-item collection-header center">
-          <h5>Gestione Utenza</h5></div>
-
-      </div>
-      <div class="collection">
-        <div href="#!" class="collection-item collection-header center">
-          <img src="OOP_Template/img/admin_user.png" /></div>
-
-      </div>
-
-      <ul class="collapsible" data-collapsible="accordion">
-        <li>
-          <div class="collapsible-header"><i class="material-icons">account_circle</i>Utente - Ruolo</div>
-          <div class="collapsible-body center">
-
-            <h5>Promuovi a:</h5>
-            <p>
-              <a class="waves-effect waves-light btn">Utente Avanzato</a>
-              <a class="waves-effect waves-light btn">Aquisitore</a>
-              <a class="waves-effect waves-light btn">Trascrittore</a>
-            </p>
-            <p>
-              <a class="waves-effect waves-light btn">Revisore Aquisizioni</a>
-              <a class="waves-effect waves-light btn">Revisore Trascrizioni</a>
-            </p>
-
-
-            <br />
-          </div>
-
-        </li>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">account_circle</i>Utente</div>
-            <div class="collapsible-body center">
-
-              <h5>Promuovi a:</h5>
-              <p>
-                <a class="waves-effect waves-light btn">Utente Avanzato</a>
-                <a class="waves-effect waves-light btn">Aquisitore</a>
-                <a class="waves-effect waves-light btn">Trascrittore</a>
-              </p>
-              <p>
-                <a class="waves-effect waves-light btn">Revisore Aquisizioni</a>
-                <a class="waves-effect waves-light btn">Revisore Trascrizioni</a>
-              </p>
-
-
-              <br />
-            </div>
-
-          </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">account_circle</i>Utente</div>
-              <div class="collapsible-body center">
-
-                <h5>Promuovi a:</h5>
-                <p>
-                  <a class="waves-effect waves-light btn">Utente Avanzato</a>
-                  <a class="waves-effect waves-light btn">Aquisitore</a>
-                  <a class="waves-effect waves-light btn">Trascrittore</a>
-                </p>
-                <p>
-                  <a class="waves-effect waves-light btn">Revisore Aquisizioni</a>
-                  <a class="waves-effect waves-light btn">Revisore Trascrizioni</a>
-                </p>
-
-
-                <br />
-              </div>
-
-            </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">account_circle</i>Utente</div>
-                <div class="collapsible-body center">
-
-                  <h5>Promuovi a:</h5>
-                  <p>
-                    <a class="waves-effect waves-light btn">Utente Avanzato</a>
-                    <a class="waves-effect waves-light btn">Aquisitore</a>
-                    <a class="waves-effect waves-light btn">Trascrittore</a>
-                  </p>
-                  <p>
-                    <a class="waves-effect waves-light btn">Revisore Aquisizioni</a>
-                    <a class="waves-effect waves-light btn">Revisore Trascrizioni</a>
-                  </p>
-
-
-                  <br />
-                </div>
-
-              </li>
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">account_circle</i>Utente</div>
-                  <div class="collapsible-body center">
-
-                    <h5>Promuovi a:</h5>
-                    <p>
-                      <a class="waves-effect waves-light btn">Utente Avanzato</a>
-                      <a class="waves-effect waves-light btn">Aquisitore</a>
-                      <a class="waves-effect waves-light btn">Trascrittore</a>
-                    </p>
-                    <p>
-                      <a class="waves-effect waves-light btn">Revisore Aquisizioni</a>
-                      <a class="waves-effect waves-light btn">Revisore Trascrizioni</a>
-                    </p>
-
-
-                    <br />
-                  </div>
-
-                </li>
-                  <li>
-                    <div class="collapsible-header"><i class="material-icons">account_circle</i>Utente</div>
-                    <div class="collapsible-body center">
-
-                      <h5>Promuovi a:</h5>
-                      <p>
-                        <a class="waves-effect waves-light btn">Utente Avanzato</a>
-                        <a class="waves-effect waves-light btn">Aquisitore</a>
-                        <a class="waves-effect waves-light btn">Trascrittore</a>
-                      </p>
-                      <p>
-                        <a class="waves-effect waves-light btn">Revisore Aquisizioni</a>
-                        <a class="waves-effect waves-light btn">Revisore Trascrizioni</a>
-                      </p>
-
-
-                      <br />
-                    </div>
-
-                  </li>
-                    <li>
-                      <div class="collapsible-header"><i class="material-icons">account_circle</i>Utente</div>
-                      <div class="collapsible-body center">
-
-                        <h5>Promuovi a:</h5>
-                        <p>
-                          <a class="waves-effect waves-light btn">Utente Avanzato</a>
-                          <a class="waves-effect waves-light btn">Aquisitore</a>
-                          <a class="waves-effect waves-light btn">Trascrittore</a>
-                        </p>
-                        <p>
-                          <a class="waves-effect waves-light btn">Revisore Aquisizioni</a>
-                          <a class="waves-effect waves-light btn">Revisore Trascrizioni</a>
-                        </p>
-
-
-                        <br />
-                      </div>
-
-                    </li>
-                      <li>
-                        <div class="collapsible-header"><i class="material-icons">account_circle</i>Utente</div>
-                        <div class="collapsible-body center">
-
-                          <h5>Promuovi a:</h5>
-                          <p>
-                            <a class="waves-effect waves-light btn">Utente Avanzato</a>
-                            <a class="waves-effect waves-light btn">Aquisitore</a>
-                            <a class="waves-effect waves-light btn">Trascrittore</a>
-                          </p>
-                          <p>
-                            <a class="waves-effect waves-light btn">Revisore Aquisizioni</a>
-                            <a class="waves-effect waves-light btn">Revisore Trascrizioni</a>
-                          </p>
-
-
-                          <br />
-                        </div>
-
-                      </li>
-
-
-      </ul>
-
-
-      <div class="collection">
-        <div href="#!" class="collection-item collection-header center">
-          <img src="OOP_Template/img/add.png" style="height:3em; weight:3em;" /></div>
-
-      </div>
-</div>
-    </div>
-  </div>
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="OOP_Template/js/materialize.js"></script>
-  <script src="OOP_Template/js/init.js"></script>
+      				<#if lista_opere ??>
+	      				<#list lista_opere as opera>
+		        			<li>
+		          				<div class="collapsible-header"><i class="material-icons">bookmark_border</i>${opera.nome}</div>
+		          				<div class="collapsible-body center">
+		            			<br/>
+		            			<form method="post" action="backoffice">
+		            			 <input type="hidden" name="opera" value="${opera.nome}">
+					          	 <button type="submit" name="pubblica" value="pubblica"> <a class="waves-effect waves-light btn">Pubblica</a></button>
+					             <button type="submit" name="elimina" value="elimina"><a class="waves-effect waves-light btn">Elimina</a></button>
+					            <a class="waves-effect waves-light btn">Vai all'opera</a>
+					            </form>
+					            <br/>
+					            <br/>
+					          </div>
+		
+					        </li>
+				        </#list>
+			        </#if>
+				</ul>
+				
+				<div class="collection">
+		        	<div href="#!" class="collection-item collection-header center">
+		        		<a href="insert_pub">  <img src="OOP_Template/img/add.png" style="height:3em; weight:3em;" /> </a>
+		        	</div>
+				</div>
+		    </div>
+		
+		     
+		     
+		
+			<div class="col s6">
+				<!-- SECONDO COL S6 -->
+		
+		    	<div class="collection">
+		        	<div href="#!" class="collection-item collection-header center">
+		          		<h5>Gestione Utenza</h5>
+		          	</div>
+		        </div>
+		      	<div class="collection">
+		        	<div href="#!" class="collection-item collection-header center">
+		          		<img src="OOP_Template/img/admin_user.png" />
+		          	</div>
+		     	</div>
+		     	<ul class="collapsible" data-collapsible="accordion">
+		        	<#if lista_utenti ??>
+	      				<#list lista_utenti as utente>
+		        	<li>
+		          		<div class="collapsible-header"><i class="material-icons">account_circle</i>${utente.nome} ${utente.cognome} - ${utente.usermail}</div>
+		          		<div class="collapsible-body center">
+		          			<h5>Promuovi a:</h5>
+		          			<form action="backoffice" method="post">
+		          			<input type="hidden" name="utente" value="${utente.usermail}">
+		            		<p>
+		              		<button type="submit" name="avanzato" value="avanzato">	<a class="waves-effect waves-light btn">Utente Avanzato</a></button> 
+		              		<button type="submit" name="aquisitore" value="aquisitore">	<a class="waves-effect waves-light btn">Aquisitore</a></button> 
+		              		<button type="submit" name="trascrittore" value="trascrittore">	<a class="waves-effect waves-light btn">Trascrittore</a></button>
+		            		</p>
+		            		<p>
+				            <button type="submit" name="revisore_a" value="revisore_a">	<a class="waves-effect waves-light btn">Revisore Aquisizioni</a></button>
+				            <button type="submit" name="revisore_t" value="revisore_t">	<a class="waves-effect waves-light btn">Revisore Trascrizioni</a></button>
+				            </p>
+				            <br/>
+		          		</div>
+		          		</form>
+		
+		        	</li>
+		          	</#list>
+		          	</#if>
+		
+		
+		      	</ul>
+		      	<div class="collection">
+	        		<div href="#!" class="collection-item collection-header center">
+	          			<a href="aggiungipers"><img src="OOP_Template/img/add.png" style="height:3em; weight:3em;" /></a>
+	          		</div>
+          		</div>
+			</div>
+    	
+  	</div>
+  	</div>
+  
+  	<!--  Scripts-->
+  	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  	<script src="OOP_Template/js/materialize.js"></script>
+  	<script src="OOP_Template/js/init.js"></script>
 
 </body>
 

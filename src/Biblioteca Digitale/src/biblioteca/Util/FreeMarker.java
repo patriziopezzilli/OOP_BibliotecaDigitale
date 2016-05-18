@@ -28,7 +28,7 @@ public class FreeMarker {
      */
     public static void process(String path_template, Map data, HttpServletResponse response, ServletContext servlet_context) throws IOException{
         
-        response.setContentType("text/html;charset=UTF-8");        
+        response.setContentType("text/html;charset=ISO-8859-1");        
         // Configurazione freemarker
         Configuration cfg = new Configuration();
         

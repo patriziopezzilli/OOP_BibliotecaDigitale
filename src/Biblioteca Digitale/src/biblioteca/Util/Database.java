@@ -132,6 +132,7 @@ public class Database {
         for(Map.Entry<String,Object> e:data.entrySet()){
             attr = e.getKey();
             value = e.getValue();
+            System.out.print(value);
             if(value instanceof Integer){
                 query = query + attr + " = " + value + ", ";
             }else{
