@@ -199,6 +199,7 @@ public class Index extends HttpServlet{
 	    	List<Opera> temp= new ArrayList<Opera>();
 	    	
 
+<<<<<<< HEAD
 	    	try{
 
 				 Database.connect();
@@ -227,4 +228,6 @@ public class Index extends HttpServlet{
 	    	
 	    	
 	    }
+=======
+>>>>>>> origin/master
 	}

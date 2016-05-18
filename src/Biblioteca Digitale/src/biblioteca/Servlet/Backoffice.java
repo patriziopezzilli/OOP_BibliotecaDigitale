@@ -227,7 +227,10 @@ public class Backoffice extends HttpServlet {
 				 Database.connect();
 			        
 			         ResultSet rs =Database.selectRecord("pub","1");
+<<<<<<< HEAD
 			         
+=======
+>>>>>>> origin/master
 			       
 			         while(rs.next()){ 
 			        	 int id= rs.getInt("id_op");
