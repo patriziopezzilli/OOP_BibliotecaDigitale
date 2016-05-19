@@ -11,9 +11,9 @@ import java.util.Map;
 public class Database {
 	
 	protected static String DRIVER = "com.mysql.jdbc.Driver";
-	protected static String url = "jdbc:mysql://localhost/BDigitale";
+	protected static String url = "jdbc:mysql://localhost/bdigitale";
 	protected static String user = "root";
-	protected static String psw = "root";
+	protected static String psw = "";
 
 
 	private static Connection db;
@@ -132,7 +132,6 @@ public class Database {
         for(Map.Entry<String,Object> e:data.entrySet()){
             attr = e.getKey();
             value = e.getValue();
-            System.out.print(value);
             if(value instanceof Integer){
                 query = query + attr + " = " + value + ", ";
             }else{

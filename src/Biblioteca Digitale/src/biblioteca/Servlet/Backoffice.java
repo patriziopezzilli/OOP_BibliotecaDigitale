@@ -64,85 +64,24 @@ public class Backoffice extends HttpServlet {
 	    	 HttpSession s = SecurityLayer.checkSession(request);
 	    	 if(s!=null){
 	    		 
-	    		 
-	    		 /**
-	    		  * 
-	    		  * 
-	    		  * 
-	    		  * Gestione Opere
-	    		  * 
-	    		  * 
-	    		  * 
-	    		  */
-	    		 
 	    		 if(!isNull(request.getParameter("elimina"))){
-	    			 
-	    			 String opera= request.getParameter("opera");
+	    			 String opera = request.getParameter("opera");
 	    			 Database.connect();
-	    			 Database.deleteRecord("pub", "nome='"+opera+"'");
+	    			 
+	    			 Database.deleteRecord("pub", "nome ='"+opera+"'");
+	    			 
 	    			 Database.close();
+	    			 
 	    		 }
 	    		 
-	    		 
-	    		 /**
-	    		  * 
-	    		  * 
-	    		  * 
-	    		  * Gestione Utenza
-	    		  * 
-	    		  * 
-	    		  * 
-	    		  */
-	    		 
-	    		 if(!isNull(request.getParameter("avanzato"))){
-	    			 
-	    			 String Utente= request.getParameter("utente");
+	    		 if(!isNull(request.getParameter("pubblica"))){
+	    			 String opera = request.getParameter("opera");
 	    			 Database.connect();
 	    			 Map<String, Object> temp= new HashMap<String,Object>();
-	    			 temp.put("gruppo",'7');   //Come da accordo con DB
-	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
-	    			 Database.close();
+	    			 temp.put("pubblicato",'1');
+	    			 Database.updateRecord("pub", temp, "nome ='"+opera+"'");
 	    		 }
 	    		 
-	    		 if(!isNull(request.getParameter("aquisitore"))){
-	    			 
-	    			 String Utente= request.getParameter("utente");
-	    			 Database.connect();
-	    			 Map<String, Object> temp= new HashMap<String,Object>();
-	    			 temp.put("gruppo",'5');
-	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
-	    			 Database.close();
-	    		 }
-	    		 
-	    		 if(!isNull(request.getParameter("trascrittore"))){
-	    			 
-	    			 String Utente= request.getParameter("utente");
-	    			 Database.connect();
-	    			 Map<String, Object> temp= new HashMap<String,Object>();
-	    			 temp.put("gruppo",'3');
-	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
-	    			 Database.close();
-	    		 }
-	    		 
-	    		 if(!isNull(request.getParameter("revisore_a"))){
-	    			 
-	    			 String Utente= request.getParameter("utente");
-	    			 Database.connect();
-	    			 Map<String, Object> temp= new HashMap<String,Object>();
-	    			 temp.put("gruppo",'6');
-	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
-	    			 Database.close();
-	    		 }
-	    		 
-	    		 if(!isNull(request.getParameter("revisore_t"))){
-	    			 
-	    			 String Utente= request.getParameter("utente");
-	    			 Database.connect();
-	    			 Map<String, Object> temp= new HashMap<String,Object>();
-	    			 temp.put("gruppo",'4');
-	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
-	    			 Database.close();
-	    		 }
 	    	
 	    		 List<Opera> lista_opere= new ArrayList<Opera>();
 	    		 List<Utente> lista_utenti= new ArrayList<Utente>();
@@ -165,7 +104,7 @@ public class Backoffice extends HttpServlet {
 
 	    	 
 	       
-	}
+	    }
 
 	    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 	    /**
@@ -199,6 +138,7 @@ public class Backoffice extends HttpServlet {
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
 	        try {
+	        	
 				processRequest(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -227,10 +167,7 @@ public class Backoffice extends HttpServlet {
 				 Database.connect();
 			        
 			         ResultSet rs =Database.selectRecord("pub","1");
-<<<<<<< HEAD
 			         
-=======
->>>>>>> origin/master
 			       
 			         while(rs.next()){ 
 			        	 int id= rs.getInt("id_op");
