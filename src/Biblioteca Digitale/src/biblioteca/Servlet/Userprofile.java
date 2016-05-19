@@ -1,22 +1,18 @@
 package biblioteca.Servlet;
 
-import static biblioteca.Util.DataUtil.crypt;
-import static java.util.Objects.isNull;
-
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,12 +24,31 @@ import biblioteca.Util.Database;
 import biblioteca.Util.FreeMarker;
 import biblioteca.Util.SecurityLayer;
 
+public class Userprofile extends HttpServlet{
 
-public class Userprofile extends HttpServlet {
-	
-	Map<String,Object> data= new HashMap<String,Object>();
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
     
-	  
+	    private void action_error(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	    	Map<String,Object> data= new HashMap<String,Object>();
+
+	    	//assumiamo che l'eccezione sia passata tramite gli attributi della request
+	        //we assume that the exception has been passed using the request attributes
+	        Exception exception = (Exception) request.getAttribute("exception");
+	        String message;
+	        if (exception != null && exception.getMessage() != null) {
+	            message = exception.getMessage();
+	        } else {
+	            message = "Unknown error";
+	        }
+	        data.put("errore", message);
+	        FreeMarker.process("404page.html", data, response, getServletContext());
+	        
+	      
+	    }
+	          
 	 /**
 	     * Caricamento pagina di Home
 	     *
@@ -44,8 +59,9 @@ public class Userprofile extends HttpServlet {
 	     */
 	    @Override
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-	        
-           HttpSession s = SecurityLayer.checkSession(request);
+	    	Map<String,Object> data= new HashMap<String,Object>();
+
+	    	 HttpSession s = SecurityLayer.checkSession(request);
 
 	    	  if (s != null) {
 	                data.put("session",s.getAttribute("username"));
@@ -56,29 +72,12 @@ public class Userprofile extends HttpServlet {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-					
 		 	        data.put("test", test);
 	                FreeMarker.process("userprofile.html", data, response, getServletContext());
 	                
 	            } else FreeMarker.process("index.html", data, response, getServletContext());
-	    }
-
-	     @Override
-	    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-	        
-	    	 FreeMarker.process("userprofile.html", data, response, getServletContext());
-	    }
-
 	    
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Servlet per la gestione del profilo personale";
+	    	
+	       
 	    }
-	}
+}
