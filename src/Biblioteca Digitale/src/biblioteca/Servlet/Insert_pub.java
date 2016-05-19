@@ -99,11 +99,7 @@ public class Insert_pub extends HttpServlet{
 	     @Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 	    	 HttpSession s = SecurityLayer.checkSession(request);
-<<<<<<< HEAD
 	    	Map<String,Object> data= new HashMap<String,Object>();
-=======
-	    		Map<String,Object> data= new HashMap<String,Object>();
->>>>>>> origin/master
 
 	    	  String nome = request.getParameter("titolo");
 	    	  
@@ -156,7 +152,7 @@ public class Insert_pub extends HttpServlet{
 
 	 				 Database.connect();
 	 			        
-	 			        ResultSet rs =Database.selectRecord("pub", "1");
+	 			        ResultSet rs =Database.selectRecord("pub", "pubblicato = 1");
 	 			        temp= new ArrayList<Opera>(); 
 	 			        
 	 			         while(rs.next()){ 

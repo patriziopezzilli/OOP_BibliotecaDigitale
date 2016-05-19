@@ -143,7 +143,15 @@ public class Backoffice extends HttpServlet {
 	    			 Database.updateRecord("users", temp, "email='"+Utente+"'");
 	    			 Database.close();
 	    		 }
-	    	
+	    		 
+	    		 if(!isNull(request.getParameter("pubblica"))){
+	    			  String opera = request.getParameter("opera");
+	    			  Database.connect();
+	    			  Map<String, Object> temp= new HashMap<String,Object>();
+	    			  temp.put("pubblicato",'1');
+	    			  Database.updateRecord("pub", temp, "nome ='"+opera+"'");
+	    			     		 }
+	    		 
 	    		 List<Opera> lista_opere= new ArrayList<Opera>();
 	    		 List<Utente> lista_utenti= new ArrayList<Utente>();
 
@@ -227,10 +235,7 @@ public class Backoffice extends HttpServlet {
 				 Database.connect();
 			        
 			         ResultSet rs =Database.selectRecord("pub","1");
-<<<<<<< HEAD
 			         
-=======
->>>>>>> origin/master
 			       
 			         while(rs.next()){ 
 			        	 int id= rs.getInt("id_op");

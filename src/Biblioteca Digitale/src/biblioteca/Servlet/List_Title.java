@@ -72,7 +72,7 @@ public class List_Title extends HttpServlet {
 
 	 				 Database.connect();
 	 			        
-	 			        ResultSet rs =Database.selectRecord("pub", "1");
+	 			        ResultSet rs =Database.selectRecord("pub", "pubblicato = 1");
 	 			        temp= new ArrayList<Opera>(); 
 	 			        
 	 			         while(rs.next()){ 
