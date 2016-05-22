@@ -8,8 +8,16 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="OOP_Template/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="OOP_Template/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.min.css" rel="stylesheet"/>
+        <link type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css" rel="stylesheet"/>
+        <link type="text/css" href="OOP_Template/editor/editor.css" rel="stylesheet"/>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.min.js"></script>
+        <script src="//wafi.iit.cnr.it/webvis/tmp/codemirror_mode_simple.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/addon/search/searchcursor.min.js"></script>
+
 </head>
 
 <body>
@@ -17,9 +25,9 @@
 
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container">
-      <a href="#" class="brand-logo center">Titolo Opera</a>
+      <a href="#" class="brand-logo center">${nomeopera}</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li>      <i class="material-icons left">home</i>
+        <li>     <a href="list_title"> <i class="material-icons left">undo</i></a>
 
         </li>
         <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Scegli Pagina</a></li>
@@ -28,7 +36,7 @@
         <li>
 
         </li>
-        <li><a class="btn-flat disabled">Pagina_Attuale</a></li>
+        <li><a class="btn-flat disabled">Pagina Attuale : ${index}</a></li>
       </ul>
 
     </div>
@@ -45,17 +53,33 @@
 <div class="row">
 
   <div class="col s6">
+   <!--  IMAGE POST -->
+<form method="post" action="detail" >
+<div class="input-field col s6">
+          <input id="path" name="path" type="text" class="validate">
+          <label for="path">Path File</label>
+        </div>
+<input type="hidden" name="indice" value="${index}" />
+<input type="hidden" name="idd" value="${id}"/>
+<button type="submit" name="upload" value="upload"><a class="waves-effect waves-light btn">Upload</a></button>
+</form>
 
-
-      <img src="img/test.png" class="imgdetail" />
-
+<#if path ??>
+<!--  IMAGE POST -->
+      <img src="${path}" class="imgdetail" />
+<#else>
+<img src="OOP_Template/img/noimg.jpg" class="imgdetail" />
+</#if>
+<form method="post" action="detail">
+<input type="hidden" name="indice" value="${index}" />
+<input type="hidden" name="idd" value="${id}"/>
 <div class="bottonidatail">
   <p>
-    <a class="waves-effect waves-light btn">Prev</a>
-<a class="waves-effect waves-light btn">Next</a>
+   <button type="submit" name="prev"> <a class="waves-effect waves-light btn">Prev</a></button>
+<button type="submit" name="next"><a class="waves-effect waves-light btn">Next</a></button>
   </p>
 </div>
-
+</form>
 
 
 
@@ -64,7 +88,57 @@
 
 
   </div>
-<div class="col s6"> CI ANDRA EDITOR O ETC..</div>
+<div class="col s6"> <!--  
+<textarea id="editor">This is a sample text written in MTSS (Manuscript
+Transcription Simple Syntax), a simple language that
+can be automatically translated into TEI.||Sentences can be
+terminated with double pipes.||Line breaks are simply
+defined by inserting
+newline characters.||A word that's splitted by a line break
+can be marked by using two curly braces, as in this {{exam
+ple}}.||Abbreviated words can be annotated with the
+corresponding expansion by using a combination of square
+and round brackets: [abbr.](expansion).||
+
+Play with this code to see how the TEI is updated.</textarea>
+    <!-- <pre id="code"><code class="xml"></code></pre> -->  
+<form method="post" action="detail">
+<input type="hidden" name="indice" value="${index}" />
+<input type="hidden" name="idd" value="${id}"/>
+<div class="bottonidatail">
+  <p>
+   <button type="submit" name="prev"> <a class="waves-effect waves-light btn">Aggiorna su DB</a></button>
+<button type="submit" name="next"><a class="waves-effect waves-light btn">Valida</a></button>
+  </p>
+</div>
+</form>
+<br>
+
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <textarea id="editor">This is a sample text written in MTSS (Manuscript
+Transcription Simple Syntax), a simple language that
+can be automatically translated into TEI.||Sentences can be
+terminated with double pipes.||Line breaks are simply
+defined by inserting
+newline characters.||A word that's splitted by a line break
+can be marked by using two curly braces, as in this {{exam
+ple}}.||Abbreviated words can be annotated with the
+corresponding expansion by using a combination of square
+and round brackets: [abbr.](expansion).||
+
+Play with this code to see how the TEI is updated.</textarea>
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">View TEI Code<i class="material-icons right">more_vert</i></span>
+     
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">TEI Code<i class="material-icons right">close</i></span>
+      <pre id="code"><code class="xml"></code></pre>
+    </div>
+  </div>
+</div>
 </div>
 
 
@@ -103,8 +177,10 @@
       </div>
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+  <script src="OOP_Template/js/materialize.js"></script>
+  <script src="OOP_Template/js/init.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+  <script src="OOP_Template/editor/editor.js"></script>
 
 </body>
 

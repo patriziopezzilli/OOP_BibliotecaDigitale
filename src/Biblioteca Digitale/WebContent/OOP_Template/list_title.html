@@ -54,7 +54,7 @@
    
     <#if lista_opere ??>
     <#list lista_opere as Opera> 
-            <li class="collection-item dismissable"><div>${Opera.nome}<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+            <li class="collection-item dismissable"><div>${Opera.nome}<a href="detail?id=${Opera.id}&index=${index}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
      </#list>
      </#if>
      

@@ -1,0 +1,50 @@
+svg {
+  background: white;
+}
+.cm-sentence{
+  font-weight: bold;
+  color: #F70;
+}
+.cm-choice_square, .cm-choice_round {
+  font-weight: bold;
+  color: #07F;
+}
+.cm-w {
+  font-weight: bold;
+  color: #092;
+}
+.cm-w_content {
+  color: #092;
+}
+.cm-choice_expan {
+  font-style: italic;
+  color: #777;
+}
+.cm-sentence-2 {
+  background: yellow;
+}
+
+#editor {
+  flex: 1;
+}
+.CodeMirror {
+  flex: 1;
+  height: 500px;
+  line-height: normal;
+}
+#code {
+  margin: 0;
+  border-left: 2px solid gray;
+  background: #EEE;
+  white-space: pre-wrap;
+  overflow-y: scroll;
+  
+  height: 500px;
+  flex: 1;
+}
+
+ 
+
+.sentence_highlight {
+  background: rgba(255,255,0,0.15);
+}

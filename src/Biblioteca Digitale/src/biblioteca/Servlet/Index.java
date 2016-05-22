@@ -75,6 +75,7 @@ public class Index extends HttpServlet{
 		    		
 		 	        data.put("lista_opere", lista_opere);
 		 	        data.put("test", test);
+		 	        data.put("index", 0);
 	                FreeMarker.process("list_title.html", data, response, getServletContext());
 	                
 	            } else FreeMarker.process("index.html", data, response, getServletContext());
@@ -137,7 +138,7 @@ public class Index extends HttpServlet{
 	    		 
 	    		 /* lo passo a data */
 	    		 
-	    		
+	    		 data.put("index", 0);
 	 	        data.put("lista_opere", lista_opere);
                 FreeMarker.process("list_title.html", data, response, getServletContext());
            
@@ -203,7 +204,7 @@ public class Index extends HttpServlet{
 
 				 Database.connect();
 			        
-			         ResultSet rs =Database.selectRecord("pub","1");
+			         ResultSet rs =Database.selectRecord("pub","pubblicato=1");
 			       
 			         while(rs.next()){ 
 			        	 int id= rs.getInt("id_op");

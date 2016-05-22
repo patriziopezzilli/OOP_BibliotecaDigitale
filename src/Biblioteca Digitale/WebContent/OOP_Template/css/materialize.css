@@ -660,23 +660,23 @@
 }
 
 .blue.lighten-4 {
-  background-color: #BBDEFB !important;
+  background-color: #faf3dc !important;
 }
 
 .blue-text.text-lighten-4 {
-  color: #BBDEFB !important;
+  color: #faf3dc !important;
 }
 
 .blue.lighten-3 {
-  background-color: #90CAF9 !important;
+  background-color: #faf3dc !important;
 }
 
 .blue-text.text-lighten-3 {
-  color: #90CAF9 !important;
+  color: #faf3dc !important;
 }
 
 .blue.lighten-2 {
-  background-color: #64B5F6 !important;
+  background-color: #faf3dc !important;
 }
 
 .blue-text.text-lighten-2 {
@@ -756,7 +756,7 @@
 }
 
 .light-blue {
-  background-color: #7e4600 !important;
+  background-color: #986945 !important;
 }
 
 .light-blue-text {
@@ -796,7 +796,7 @@
 }
 
 .light-blue.lighten-1 {
-  background-color: #7e4600 !important;
+  background-color: #986945 !important;
 }
 
 .light-blue-text.text-lighten-1 {
@@ -1676,11 +1676,11 @@
 }
 
 .orange.lighten-3 {
-  background-color: #ffcc80 !important;
+  background-color: #faf3dc !important;
 }
 
 .orange-text.text-lighten-3 {
-  color: #ffcc80 !important;
+  color: #faf3dc !important;
 }
 
 .orange.lighten-2 {
@@ -3168,7 +3168,7 @@ td, th {
 
 .collection .collection-item.active {
   background-color: #9c4301;
-  color: #8c4400;
+  color: #986945;
 }
 
 .collection .collection-item.active .secondary-content {
@@ -3178,7 +3178,7 @@ td, th {
 .collection a.collection-item {
   display: block;
   transition: .25s;
-  color: #8c4400;
+  color: #986945;
 }
 
 .collection a.collection-item:not(.active):hover {
@@ -4900,7 +4900,7 @@ small {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #8c4400;
+  background-color: #986945;
   text-align: center;
   letter-spacing: .5px;
   transition: .2s ease-out;
@@ -4908,7 +4908,7 @@ small {
 }
 
 .btn:hover, .btn-large:hover {
-  background-color: #8c4400;
+  background-color: #986945;
 }
 
 .btn-floating {
@@ -4921,7 +4921,7 @@ small {
   height: 37px;
   line-height: 37px;
   padding: 0;
-  background-color: #8c4400;
+  background-color: #986945;
   border-radius: 50%;
   transition: .3s;
   cursor: pointer;
@@ -4938,7 +4938,7 @@ small {
 }
 
 .btn-floating:hover {
-  background-color: #8c4400;
+  background-color: #986945;
 }
 
 .btn-floating:before {
@@ -5293,7 +5293,7 @@ a.waves-effect .waves-ripple {
   bottom: -100%;
   margin: 0;
   width: 100%;
-  max-height: 45%;
+  max-height: 100%;
   border-radius: 0;
   will-change: bottom, opacity;
 }

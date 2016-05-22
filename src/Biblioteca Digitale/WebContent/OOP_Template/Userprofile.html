@@ -16,7 +16,7 @@
 
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
-			<a href="#" class="brand-logo center">Amministrazione</a>
+			<a href="#" class="brand-logo center">Pagina Personale</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li> <a href="list_title"> <i class="material-icons left">undo</i></a>
 
@@ -54,7 +54,7 @@
 				</div>
 				<div >
 					<div href="#!" class="collection-item collection-header center">
-						<h3>Nome Cognome</h3>
+						<h3>${profilo.nome} ${profilo.cognome}</h3>
 					</div>
 
 				</div>
@@ -77,9 +77,9 @@
 				<br>
 				<ul class="collapsible" data-collapsible="accordion">
 					<li>
-						<div class="collapsible-header"><i class="material-icons">email</i>E-mail</div>
-						<div class="collapsible-header"><i class="material-icons">today</i>Anno di Nascita</div>
-						<div class="collapsible-header"><i class="material-icons">business</i>Citta</div>
+						<div class="collapsible-header"><i class="material-icons">email</i>${profilo.usermail}</div>
+						<div class="collapsible-header"><i class="material-icons">today</i>${profilo.datanascita}</div>
+						<div class="collapsible-header"><i class="material-icons">business</i>${profilo.citta}</div>
 
 					</li>
 
@@ -94,9 +94,13 @@
 				<br>
 				<ul class="collapsible" data-collapsible="accordion">
 					<li>
-						<div class="collapsible-header"><i class="material-icons">library_books</i>Gomorra</div>
-						<div class="collapsible-header"><i class="material-icons">library_books</i>Gomorra 2</div>
-						<div class="collapsible-header"><i class="material-icons">library_books</i>Gomorra 3</div>
+					<#if listaopere ??>
+					<#list listaopere as opera>
+						<div class="collapsible-header"><i class="material-icons">library_books</i>${opera}</div>
+					</#list>
+					<#else>
+					<div class="collapsible-header"><i class="material-icons">library_books</i>Nessuna Opera inserita!</div>
+					</#if>
 
 					</li>
 

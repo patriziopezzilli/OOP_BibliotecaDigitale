@@ -99,6 +99,7 @@ public class List_Title extends HttpServlet {
 	    		 String test= DataUtil.getUsername((String) s.getAttribute("username"));
 	 	        data.put("test", test);
 	 	        data.put("lista_opere", temp);
+	 	        data.put("index", 0);
 	 	        FreeMarker.process("list_title.html", data, response, getServletContext());
 	    	 }else 	
 	    		 FreeMarker.process("index.html", data, response, getServletContext());

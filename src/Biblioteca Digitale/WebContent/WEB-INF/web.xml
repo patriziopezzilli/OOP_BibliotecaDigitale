@@ -16,6 +16,10 @@
     <servlet-class>biblioteca.Servlet.Insert_User</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>Success</servlet-name>
+    <servlet-class>biblioteca.Servlet.Success</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>List_Title</servlet-name>
     <servlet-class>biblioteca.Servlet.List_Title</servlet-class>
   </servlet>
@@ -27,9 +31,17 @@
     <servlet-name>Insert_pub</servlet-name>
     <servlet-class>biblioteca.Servlet.Insert_pub</servlet-class>
   </servlet>
+   <servlet>
+    <servlet-name>Detail</servlet-name>
+    <servlet-class>biblioteca.Servlet.Detail</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Index</servlet-name>
     <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Success</servlet-name>
+    <url-pattern>/success</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Insert_pub</servlet-name>
@@ -39,7 +51,11 @@
     <servlet-name>Backoffice</servlet-name>
     <url-pattern>/backoffice</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Detail</servlet-name>
+    <url-pattern>/detail</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>Userprofile</servlet-name>
     <url-pattern>/userprofile</url-pattern>
   </servlet-mapping>
