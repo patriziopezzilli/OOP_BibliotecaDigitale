@@ -1,7 +1,7 @@
 <snippet>
 ![alt tag](http://s33.postimg.org/djzgn5van/Schermata_2016_06_02_alle_15_50_49.png)
   <content>
-# Object Oriented Programming
+
 ## Team Member:
 - Patrizio Pezzilli   (Mat.227636)
 - Stefano Cortellessa (Mat.227630)
