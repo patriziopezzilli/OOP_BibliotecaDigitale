@@ -100,6 +100,19 @@ public class List_Title extends HttpServlet {
 	 	        data.put("test", test);
 	 	        data.put("lista_opere", temp);
 	 	        data.put("index", 0);
+	 	        
+	 	       int gruppo=0;
+	 	        try {
+					 gruppo= DataUtil.getGroup((String)s.getAttribute("username"));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	 	        
+	 	       data.put("gruppo",gruppo);
+	 	        
+	 	        System.out.print(data.get("gruppo"));
+	 	        
 	 	        FreeMarker.process("list_title.html", data, response, getServletContext());
 	    	 }else 	
 	    		 FreeMarker.process("index.html", data, response, getServletContext());
