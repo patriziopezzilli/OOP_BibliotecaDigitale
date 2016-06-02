@@ -19,6 +19,28 @@ import javax.naming.NamingException;
 public class DataUtil {
 	
 	
+	/*
+	  * data l'email restituisce l'id del gruppo a cui appartiene
+	  * 1 - Amministratore
+	  * 2 - UtenteBase
+	  * 3 - Trascrittore
+	  * 4 - RevisoreTrascrizioni
+	  * 5 - Aquisitore
+	  * 6 - RevisoreAquisizioni
+	  * 7 - UtenteAvanzato
+	  */
+	 public static int getGroup(String email) throws Exception{
+	  int id = 0;
+	  Database.connect();
+	  String condition = "email='" + email + "'";
+	  ResultSet rs = Database.selectRecord("users", condition);
+	  while (rs.next()) {
+	   id = rs.getInt("gruppo");
+	  }
+	  System.out.println("GROUP :" + id);
+	  return id;
+	 }
+	 
 	public static String getUsername(String email) throws Exception {
 		
 		String nome = null;
