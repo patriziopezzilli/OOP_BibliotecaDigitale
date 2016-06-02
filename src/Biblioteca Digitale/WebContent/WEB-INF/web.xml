@@ -11,6 +11,10 @@
     <servlet-name>Userprofile</servlet-name>
     <servlet-class>biblioteca.Servlet.Userprofile</servlet-class>
   </servlet>
+   <servlet>
+    <servlet-name>Editor</servlet-name>
+    <servlet-class>biblioteca.Servlet.Editor</servlet-class>
+  </servlet>
   <servlet>
     <servlet-name>Insert_User</servlet-name>
     <servlet-class>biblioteca.Servlet.Insert_User</servlet-class>
@@ -31,6 +35,10 @@
     <servlet-name>Insert_pub</servlet-name>
     <servlet-class>biblioteca.Servlet.Insert_pub</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Uploadform</servlet-name>
+    <servlet-class>biblioteca.Servlet.Uploadform</servlet-class>
+  </servlet>
    <servlet>
     <servlet-name>Detail</servlet-name>
     <servlet-class>biblioteca.Servlet.Detail</servlet-class>
@@ -38,6 +46,14 @@
   <servlet-mapping>
     <servlet-name>Index</servlet-name>
     <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Editor</servlet-name>
+    <url-pattern>/editorTEI</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Uploadform</servlet-name>
+    <url-pattern>/uploadform</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Success</servlet-name>

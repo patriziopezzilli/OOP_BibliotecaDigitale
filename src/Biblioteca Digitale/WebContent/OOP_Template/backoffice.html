@@ -45,16 +45,16 @@
  		<div class="col s12">
     		<div class="col s6">
 
-      			<div class="collection">
+      			
         			<div href="#!" class="collection-item collection-header center">
-          				<h5>Opere da pubblicare</h5>
-          			</div>
+          				<h5>Opere da pubblicare</h5><br>
+          			
 
       			</div>
-      			<div class="collection">
+      			
         			<div href="#!" class="collection-item collection-header center">
-          				<img src="OOP_Template/img/admin_book.png" />
-          			</div>
+          				<img src="OOP_Template/img/admin_book.png" /><br><br>
+          			
           		</div>
           		<ul class="collapsible" data-collapsible="accordion">
       
@@ -67,22 +67,22 @@
 		            			<form method="post" action="backoffice">
 		            			 <input type="hidden" name="opera" value="${opera.nome}">
 		            			 <input type="hidden" name="id" value="${opera.id}">
-					          	 <button type="submit" name="pubblica" value="pubblica"> <a class="waves-effect waves-light btn">Pubblica</a></button>
-					             <button type="submit" name="elimina" value="elimina"><a class="waves-effect waves-light btn">Elimina</a></button>
-					            <button type="submit" name="vai" value="vai"><a class="waves-effect waves-light btn">Vai all'opera</a></button>
+					          	 <button class="waves-effect waves-light btn" type="submit" name="pubblica" value="pubblica"> Pubblica</button>
+					             <button class="waves-effect waves-light btn" type="submit" name="elimina" value="elimina">Elimina</button>
+					            <button class="waves-effect waves-light btn" type="submit" name="vai" value="vai">Vai all'opera</button>
 					            </form>
 					            <br/>
-					            <br/>
+					           
 					          </div>
 		
 					        </li>
 				        </#list>
 			        </#if>
-				</ul>
+				</ul><br>
 				
-				<div class="collection">
+				<div>
 		        	<div href="#!" class="collection-item collection-header center">
-		        		<a href="insert_pub">  <img src="OOP_Template/img/add.png" style="height:3em; weight:3em;" /> </a>
+		        		<a href="insert_pub" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
 		        	</div>
 				</div>
 		    </div>
@@ -93,35 +93,39 @@
 			<div class="col s6">
 				<!-- SECONDO COL S6 -->
 		
-		    	<div class="collection">
+		    	
 		        	<div href="#!" class="collection-item collection-header center">
-		          		<h5>Gestione Utenza</h5>
+		          		<h5>Gestione Utenza</h5><br>
 		          	</div>
-		        </div>
-		      	<div class="collection">
+		        
+		      	
 		        	<div href="#!" class="collection-item collection-header center">
-		          		<img src="OOP_Template/img/admin_user.png" />
+		          		<img src="OOP_Template/img/admin_user.png" /><br><br>
 		          	</div>
-		     	</div>
+		     	
 		     	<ul class="collapsible" data-collapsible="accordion">
 		        	<#if lista_utenti ??>
 	      				<#list lista_utenti as utente>
 		        	<li>
 		          		<div class="collapsible-header"><i class="material-icons">account_circle</i>${utente.nome} ${utente.cognome} - ${utente.usermail}</div>
 		          		<div class="collapsible-body center">
-		          			<h5>Promuovi a:</h5>
+		          			
 		          			<form action="backoffice" method="post">
+		          			
 		          			<input type="hidden" name="utente" value="${utente.usermail}">
-		            		<p>
-		              		<button type="submit" name="avanzato" value="avanzato">	<a class="waves-effect waves-light btn">Utente Avanzato</a></button> 
-		              		<button type="submit" name="aquisitore" value="aquisitore">	<a class="waves-effect waves-light btn">Aquisitore</a></button> 
-		              		<button type="submit" name="trascrittore" value="trascrittore">	<a class="waves-effect waves-light btn">Trascrittore</a></button>
-		            		</p>
-		            		<p>
-				            <button type="submit" name="revisore_a" value="revisore_a">	<a class="waves-effect waves-light btn">Revisore Aquisizioni</a></button>
-				            <button type="submit" name="revisore_t" value="revisore_t">	<a class="waves-effect waves-light btn">Revisore Trascrizioni</a></button>
-				            </p>
-				            <br/>
+		            		
+		            		<div class="col s12 center">
+		            		<h5>Promuovi a:</h5><br>
+		              		<button class="waves-effect waves-light btn" type="submit" name="avanzato" value="avanzato">Utente Avanzato</button> 
+		              		<button class="waves-effect waves-light btn" type="submit" name="aquisitore" value="aquisitore">Aquisitore</button> 
+		              		<button class="waves-effect waves-light btn" type="submit" name="trascrittore" value="trascrittore">Trascrittore</button><br><br>
+		            		</div>
+		            		
+		            		
+				            <button class="waves-effect waves-light btn" type="submit" name="revisore_a" value="revisore_a">Revisore Aquisizioni</button>
+				            <button class="waves-effect waves-light btn" type="submit" name="revisore_t" value="revisore_t">Revisore Trascrizioni</button><br><br>
+				            
+				            
 		          		</div>
 		          		</form>
 		
@@ -130,12 +134,12 @@
 		          	</#if>
 		
 		
-		      	</ul>
-		      	<div class="collection">
+		      	</ul><br>
+		      	
 	        		<div href="#!" class="collection-item collection-header center">
-	          			<a href="aggiungipers"><img src="OOP_Template/img/add.png" style="height:3em; weight:3em;" /></a>
+	          			  <a href="aggiungipers" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
 	          		</div>
-          		</div>
+          		
 			</div>
     	
   	</div>

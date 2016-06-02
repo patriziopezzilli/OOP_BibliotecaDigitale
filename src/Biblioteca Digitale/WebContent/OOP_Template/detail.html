@@ -2,84 +2,93 @@
 <html lang="it">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title class="hoverable">Biblioteca Digitale</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+<title class="hoverable">Biblioteca Digitale</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="OOP_Template/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="OOP_Template/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	<link type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.min.css" rel="stylesheet"/>
-        <link type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css" rel="stylesheet"/>
-        <link type="text/css" href="OOP_Template/editor/editor.css" rel="stylesheet"/>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.min.js"></script>
-        <script src="//wafi.iit.cnr.it/webvis/tmp/codemirror_mode_simple.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/addon/search/searchcursor.min.js"></script>
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link href="OOP_Template/css/materialize.css" type="text/css"
+	rel="stylesheet" media="screen,projection" />
+<link href="OOP_Template/css/style.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<link type="text/css"
+	href="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.min.css"
+	rel="stylesheet" />
+<link type="text/css"
+	href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css"
+	rel="stylesheet" />
+<link type="text/css" href="OOP_Template/editor/editor.css"
+	rel="stylesheet" />
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.min.js"></script>
+<script src="//wafi.iit.cnr.it/webvis/tmp/codemirror_mode_simple.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/addon/search/searchcursor.min.js"></script>
 
 </head>
 
 <body>
 
 
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container">
-      <a href="#" class="brand-logo center">${nomeopera}</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li>     <a href="list_title"> <i class="material-icons left">undo</i></a>
+	<nav class="light-blue lighten-1" role="navigation">
+		<div class="nav-wrapper container">
+			<a href="#" class="brand-logo center">${nomeopera}</a>
+			<ul id="nav-mobile" class="left hide-on-med-and-down">
+				<li><a href="list_title"> <i class="material-icons left">undo</i></a>
 
-        </li>
-        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Scegli Pagina</a></li>
-      </ul>
-      <ul id="nav-mobile2" class="right hide-on-med-and-down">
-        <li>
+				</li>
+				<li><a id="sceglipag"
+					class="waves-effect waves-light btn modal-trigger" href="#modal1">Scegli
+						Pagina</a></li>
+			</ul>
+			<ul id="nav-mobile2" class="right hide-on-med-and-down">
+				<li></li>
+				<li><a class="btn-flat disabled">Pagina Attuale : ${index}</a></li>
+			</ul>
 
-        </li>
-        <li><a class="btn-flat disabled">Pagina Attuale : ${index}</a></li>
-      </ul>
-
-    </div>
+		</div>
 
 
-  </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br />
+	</nav>
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<br />
 
-    </div>
-  </div>
+		</div>
+	</div>
 
-<div class="row">
+	<div class="row">
 
-  <div class="col s6">
-   <!--  IMAGE POST -->
-<form method="post" action="detail" >
-<div class="input-field col s6">
-          <input id="path" name="path" type="text" class="validate">
-          <label for="path">Path File</label>
-        </div>
-<input type="hidden" name="indice" value="${index}" />
-<input type="hidden" name="idd" value="${id}"/>
-<button type="submit" name="upload" value="upload"><a class="waves-effect waves-light btn">Upload</a></button>
-</form>
+		<div class="col s6">
+		<div class="col s10" style=" margin-left:60px;">
+		<#if gruppo == 5>
+			<a href="uploadform?id=${id}&index=${index}&nome=${nomeopera}"><button class="waves-effect waves-light btn" type="submit"
+						name="next">Upload</button></a>
+						</#if>
+						<#if gruppo == 1>
+			<a href="uploadform?id=${id}&index=${index}&nome=${nomeopera}"><button class="waves-effect waves-light btn" type="submit"
+						name="next">Upload</button></a>
+						</#if>
+			</div>
+			<br>
+			<br>
+			<!--  IMAGE POST -->
 
-<#if path ??>
-<!--  IMAGE POST -->
-      <img src="${path}" class="imgdetail" />
-<#else>
-<img src="OOP_Template/img/noimg.jpg" class="imgdetail" />
-</#if>
-<form method="post" action="detail">
-<input type="hidden" name="indice" value="${index}" />
-<input type="hidden" name="idd" value="${id}"/>
-<div class="bottonidatail">
-  <p>
-   <button type="submit" name="prev"> <a class="waves-effect waves-light btn">Prev</a></button>
-<button type="submit" name="next"><a class="waves-effect waves-light btn">Next</a></button>
-  </p>
-</div>
-</form>
+
+
+
+			<#if path ??>
+			<!--  IMAGE POST -->
+			<img src="${path}" class="imgdetail" /> <#else> <img
+				src="OOP_Template/img/noimg.jpg" class="imgdetail" /> </#if>
+			<form method="post" action="detail">
+				<input type="hidden" name="indice" value="${index}" /> <input
+					type="hidden" name="idd" value="${id}" />
+				<div class="col s12 center">
 
 
 
@@ -87,8 +96,43 @@
 
 
 
-  </div>
-<div class="col s6"> <!--  
+
+					<button class="waves-effect waves-light btn" type="submit"
+						name="prev">Prev</button>
+						<#if gruppo==6>
+					<button class="waves-effect waves-light btn" type="submit"
+						name="revisiona" value="revisiona">Revisiona</button>
+					<button class="waves-effect waves-light btn" type="submit"
+						name="elimina" value="elimina">Elimina</button>
+						</#if>
+						<#if gruppo==1>
+					<button class="waves-effect waves-light btn" type="submit"
+						name="revisiona" value="revisiona">Revisiona</button>
+					<button class="waves-effect waves-light btn" type="submit"
+						name="elimina" value="elimina">Elimina</button>
+						</#if>
+					<button class="waves-effect waves-light btn" type="submit"
+						name="next">Next</button>
+
+
+
+
+				</div>
+			</form>
+
+
+
+
+
+
+
+		</div>
+
+
+		<!--  EDITOR TEI (ONLY REVISORE) -->
+	<div class="col s6"><br></div>
+		<div class="col s6">
+			<!--  
 <textarea id="editor">This is a sample text written in MTSS (Manuscript
 Transcription Simple Syntax), a simple language that
 can be automatically translated into TEI.||Sentences can be
@@ -101,22 +145,77 @@ corresponding expansion by using a combination of square
 and round brackets: [abbr.](expansion).||
 
 Play with this code to see how the TEI is updated.</textarea>
-    <!-- <pre id="code"><code class="xml"></code></pre> -->  
-<form method="post" action="detail">
-<input type="hidden" name="indice" value="${index}" />
-<input type="hidden" name="idd" value="${id}"/>
-<div class="bottonidatail">
-  <p>
-   <button type="submit" name="prev"> <a class="waves-effect waves-light btn">Aggiorna su DB</a></button>
-<button type="submit" name="next"><a class="waves-effect waves-light btn">Valida</a></button>
-  </p>
-</div>
-</form>
-<br>
+     <pre id="code"><code class="xml"></code></pre> -->
+			<form method="post" action="detail">
+				<input type="hidden" name="indice" value="${index}" /> <input
+					type="hidden" name="idd" value="${id}" />
 
-<div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <textarea id="editor">This is a sample text written in MTSS (Manuscript
+			</form>
+			<br>
+			<form method="post" action="detail">
+
+				<div class="card">
+					<div class="card-image waves-effect waves-block waves-light">
+
+						<#if contenuto_editor ??>
+						<textarea id="editor"> ${contenuto_editor} </textarea>
+						<#else>
+						<textarea id="editor" name="textarea">{{ !!!!! Testo non ancora inserito  !!!!! }}
+
+||Vuoi essere il primo?||
+
+||Modifica questo testo e clicca "Inserisci" in basso a destra
+[Quello che inserisci sarà soggetto a validazione.](Grazie...).||</textarea>
+
+						</#if>
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">View
+							TEI Code<i class="material-icons right">more_vert</i>
+						</span>
+
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">TEI Code<i
+							class="material-icons right">close</i></span>
+						<pre id="code">
+						<code class="xml"></code>
+					</pre>
+					</div>
+				</div>
+
+
+				<div class="col s12 center">
+						<#if gruppo==4>
+					<input type="hidden" name="indice" value="${index}" /> <input
+						type="hidden" name="idd" value="${id}" /> <a
+						href="editorTEI?id=${id}&index=${index}"
+						class="waves-effect waves-light btn">OPEN IN EDITOR TEI</a>
+						</#if>
+					<#if gruppo==3>
+					<button class="waves-effect waves-light btn" type="submit"
+						name="aggiornaDB">Inserisci</button>
+					</#if>
+						<#if gruppo==1>
+					<input type="hidden" name="indice" value="${index}" /> <input
+						type="hidden" name="idd" value="${id}" /> <a
+						href="editorTEI?id=${id}&index=${index}"
+						class="waves-effect waves-light btn">OPEN IN EDITOR TEI</a>
+						</#if>
+					<#if gruppo==1>
+					<button class="waves-effect waves-light btn" type="submit"
+						name="aggiornaDB">Inserisci</button>
+					</#if>
+
+				</div>
+		</div>
+		</form>
+		<!--  EDITOR TEI (ONLY REVISORE) -->
+
+		<!--  EDITOR TEI (VERSIONE UNIVERSALE) -->
+		<!--  <div class="col s6">
+			<ul class="collection">
+				<li class="collection-item">This is a sample text written in MTSS (Manuscript
 Transcription Simple Syntax), a simple language that
 can be automatically translated into TEI.||Sentences can be
 terminated with double pipes.||Line breaks are simply
@@ -127,60 +226,53 @@ ple}}.||Abbreviated words can be annotated with the
 corresponding expansion by using a combination of square
 and round brackets: [abbr.](expansion).||
 
-Play with this code to see how the TEI is updated.</textarea>
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">View TEI Code<i class="material-icons right">more_vert</i></span>
-     
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">TEI Code<i class="material-icons right">close</i></span>
-      <pre id="code"><code class="xml"></code></pre>
-    </div>
-  </div>
-</div>
-</div>
+Play with this code to see how the TEI is updated.</li>
+			</ul>
+
+		</div> -->
+
+		<!--  EDITOR TEI (VERSIONE UNIVERSALE) -->
+
+	</div>
 
 
-    <br>
-    <br>
+	<br>
+	<br>
 
-    <div class="section">
-
-    </div>
+	<div class="section"></div>
 
 
 
-    <!-- Modal Structure -->
-      <div id="modal1" class="modal bottom-sheet">
-        <div class="modal-content">
-          <h4>Scegli a che pagina vuoi andare</h4>
-
-          <div class="collection">
-       <a href="#!" class="collection-item">1</a>
-       <a href="#!" class="collection-item ">2</a>
-       <a href="#!" class="collection-item">3</a>
-       <a href="#!" class="collection-item">4</a>
-       <a href="#!" class="collection-item">5</a>
-       <a href="#!" class="collection-item ">6</a>
-       <a href="#!" class="collection-item">7</a>
-       <a href="#!" class="collection-item">8</a>
-       <a href="#!" class="collection-item">9</a>
-       <a href="#!" class="collection-item ">10</a>
-       <a href="#!" class="collection-item">11</a>
-       <a href="#!" class="collection-item">12</a>
-     </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
-        </div>
-      </div>
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="OOP_Template/js/materialize.js"></script>
-  <script src="OOP_Template/js/init.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
-  <script src="OOP_Template/editor/editor.js"></script>
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal bottom-sheet">
+		<div class="modal-content">
+		<div class="row">
+		<div class="col s6">
+			<h4>Scegli a che pagina vuoi andare</h4>
+			</div>
+			<div class="col s6 rigth" style="text-align:right;">
+			<a href="#!"
+				class=" modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
+			</div>
+			</div>
+			<div class="collection">
+			<#list listapagine as pag>
+				<a href="detail?id=${id}&index=${pag?c}" class="collection-item">${pag?c}</a> 
+				</#list>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!"
+				class=" modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
+		</div>
+	</div>
+	<!--  Scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="OOP_Template/js/materialize.js"></script>
+	<script src="OOP_Template/js/init.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+	<script src="OOP_Template/editor/editor.js"></script>
 
 </body>
 

@@ -1,0 +1,127 @@
+<!--  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Upload Page</title>
+</head>
+<body>
+
+
+<h4> Upload per l'opera : ${nomeopera}</h4>
+<h4> Indice di riferimento (pagina) : ${index}</h4>
+
+<h4> ID di riferimento  : ${id}</h4>
+
+	<form name="form1" id="form1" action="uploadform" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id" value="${id}">
+	<input type="hidden" name="index" value="${index}">
+	
+	<input type="hidden" name="hiddenfield1" value="ok">
+	Files to upload:
+	<br/>
+	<input type="file" size="50" name="file1">
+	<br/>
+	<br/>
+	<input type="submit" value="Upload">
+	</form>
+	
+	<#if messaggio ??>
+	${messaggio}
+	<a href="detail?id=${id}&index=${index}"> <button>Torna all'opera</button></a>
+	</#if>
+</body>
+</html> -->
+
+<#include "header.html">
+
+<body>
+<nav class="light-blue lighten-1" role="navigation">
+  <div class="nav-wrapper container">
+   
+   
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+   
+    <li>
+     <a href="detail?id=${id}&index=${index}"> <i class="material-icons left">undo</i></a>
+     
+    </li>
+    
+
+   </ul>
+   
+   
+   <ul id="nav-mobile" class="right hide-on-med-and-down">
+   
+    
+     <li><a href="Logout"><i class="material-icons right">clear</i>
+    </a>
+     </form>
+     </li>
+
+   </ul>
+   <a id="logo-container" href="#" class="brand-logo"></a>
+   <ul class="right hide-on-med-and-down">
+
+   </ul>
+
+   <ul id="nav-mobile" class="side-nav">
+
+   </ul>
+
+  </div>
+ </nav>
+ <div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+   <br> <br>
+   <h1 class="header center orange-text">${nomeopera}</h1>
+   <div class="row center">
+
+    <h5 class="header col s12 light">
+     Upload immagine su indice <strong>${index}</strong>
+    </h5>
+   </div>
+
+   <br> <br>
+
+  </div>
+ </div>
+
+
+ <div class="container">
+
+  <ul>
+   <form name="form1" id="form1" action="uploadform" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="$id}"> 
+    <input type="hidden" name="index" value="$index}"> 
+    <input type="hidden" name="hiddenfield1" value="ok">
+    
+    <div class="file-field input-field">
+     <button class="btn" type="submit" value="Upload"><span>File</span> 
+      <input type="file" size="50" name="file1">
+     </button>
+     <div class="file-path-wrapper">
+      <input class="file-path validate" type="text">
+     </div>
+    </div>
+    <br>
+    <div class="row center">
+    <button class="btn" type="submit" value="Upload">
+     <span>Upload</span> 
+    </button>
+    
+    
+    </div>
+   </form>
+  </ul>
+
+ </div>
+ <br>
+ <br>
+
+ <div class="section"></div>
+ </div>
+
+
+
+
+ <#include "footer.html">

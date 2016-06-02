@@ -43,18 +43,18 @@
 	<div class="row">
 
 		<div class="col s12">
-			<div class="col s4">
+			<div class="col s4" >
 
 				<br>
 				<br>
 				<div class="circle">
 					<div href="#!" class="collection-item collection-header center circle">
-						<img src="OOP_Template/img/admin_user.png" />
+						<img src="OOP_Template/img/userprofile.png" />
 					</div>
 				</div>
 				<div >
 					<div href="#!" class="collection-item collection-header center">
-						<h3>${profilo.nome} ${profilo.cognome}</h3>
+						<h3><strong>${profilo.nome} ${profilo.cognome}</strong></h3>
 					</div>
 
 				</div>
@@ -87,9 +87,9 @@
 
 				
 				<br>
-				
+			<#if amministratore ??>	
 				<div class="collection-item collection-header center">
-					<h5>Opere Contruibuite</h5>
+					<h5>Opere Pubblicate</h5>
 				</div>
 				<br>
 				<ul class="collapsible" data-collapsible="accordion">
@@ -105,7 +105,7 @@
 					</li>
 
 				</ul>
-
+			</#if>
 
 
 			</div>
