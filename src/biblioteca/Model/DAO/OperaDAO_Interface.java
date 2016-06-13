@@ -3,7 +3,10 @@ package biblioteca.Model.DAO;
 import java.util.List;
 
 import biblioteca.Model.Opera;
-
+/**
+ * @author Luca
+ *
+ */
 public interface OperaDAO_Interface {
 	
 	public static void delete_opera(){

@@ -12,9 +12,18 @@ import javax.naming.NamingException;
 
 import biblioteca.Model.Utente;
 import biblioteca.Util.Database;
-
+/**
+ * @author Luca
+ *
+ */
 public class UtenteDAO implements UtenteDAO_Interface{
-
+	
+	 /**
+     * promuovi un utente alla qualifica "utente avanzato"  
+     * @param utente   utente da promuovere
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void promuovi_avanzato(String Utente) throws Exception {
 
 		Database.connect();
@@ -24,6 +33,13 @@ public class UtenteDAO implements UtenteDAO_Interface{
 		Database.close();
 	}
 
+	
+	/**
+     * promuovi un utente alla qualifica "acquisitore"  
+     * @param utente   utente da promuovere
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void promuovi_acquisitore(String Utente) throws Exception {
 
 		Database.connect();
@@ -33,6 +49,13 @@ public class UtenteDAO implements UtenteDAO_Interface{
 		Database.close();
 	}
 
+	
+	/**
+     * promuovi un utente alla qualifica "trascrittore"  
+     * @param utente   utente da promuovere
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void promuovi_trascrittore(String Utente) throws Exception {
 
 		Database.connect();
@@ -42,6 +65,13 @@ public class UtenteDAO implements UtenteDAO_Interface{
 		Database.close();
 	}
 	
+	
+	/**
+     * promuovi un utente alla qualifica "revisore acquisizioni"  
+     * @param utente   utente da promuovere
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void promuovi_revisore_a(String Utente) throws Exception {
 
 		 Database.connect();
@@ -51,6 +81,13 @@ public class UtenteDAO implements UtenteDAO_Interface{
 		 Database.close();
 	}
 	
+	
+	/**
+     * promuovi un utente alla qualifica "revisore trascrizioni"  
+     * @param utente   utente da promuovere
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void promuovi_revisore_t(String Utente) throws Exception {
 
 		 Database.connect();
@@ -70,6 +107,13 @@ public class UtenteDAO implements UtenteDAO_Interface{
 	  * 6 - RevisoreAquisizioni
 	  * 7 - UtenteAvanzato
 	  */
+	
+	/**
+     * dato un'email restituisce l'id del gruppo di appartenenza
+     * @param email   email dell'utente
+     * @return int
+     * @throws java.sql.SQLException
+     */
 	 public static int getGroup(String email) throws Exception{
 	  int id = 0;
 	  Database.connect();
@@ -82,6 +126,12 @@ public class UtenteDAO implements UtenteDAO_Interface{
 	  return id;
 	 }
 	 
+	 
+	 /**
+	     * restituisce la lista degli utenti  
+	     * @return lista utenti registrati
+	     * @throws java.sql.SQLException
+	     */
 	public static List<Utente> returnListutenti() throws Exception{
     	
     	List<Utente> temp2= new ArrayList<Utente>();

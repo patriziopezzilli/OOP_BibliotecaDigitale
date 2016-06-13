@@ -27,7 +27,10 @@ import biblioteca.Util.DataUtil;
 import biblioteca.Util.Database;
 import biblioteca.Util.FreeMarker;
 import biblioteca.Util.SecurityLayer;
-
+/**
+ * @author Patrizio
+ *
+ */
 public class Editor extends HttpServlet {
 
 	Map<String, Object> data = new HashMap<String, Object>();

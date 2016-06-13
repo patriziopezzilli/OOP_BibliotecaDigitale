@@ -4,6 +4,7 @@
 package biblioteca.Servlet;
 
 import biblioteca.Model.Opera;
+import biblioteca.Model.DAO.OperaDAO;
 import biblioteca.Model.DAO.UtenteDAO;
 import biblioteca.Util.DataUtil;
 import static biblioteca.Util.DataUtil.crypt;
@@ -28,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 /**
- * @author Patrizio
+ * @author Luca
  *
  */
 public class Index extends HttpServlet{
@@ -65,7 +66,7 @@ public class Index extends HttpServlet{
 		    		 /* inserisco lista in lista_opere */
 		    		 
 		    		 try {
-						lista_opere= returnList();
+						lista_opere= OperaDAO.returnList();
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -131,20 +132,64 @@ public class Index extends HttpServlet{
 				}
                 
                 List<Opera> lista_opere= new ArrayList<Opera>();
+                /* inserisco lista in lista_opere */
 	    		 
-	    		 /* inserisco lista in lista_opere */
 	    		 
-	    		 try {
-					lista_opere= returnList();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	    		List<Opera> temp= null;
+	    		List<Opera> temp2= null;
+	 	    	try{
+
+	 				 Database.connect();
+	 			        
+	 			        ResultSet rs =Database.selectRecord("pub", "pubblicato = 1");
+	 			        temp= new ArrayList<Opera>(); 
+	 			        
+	 			         while(rs.next()){ 
+	 			        	 int id= rs.getInt("id_op");
+	 			        	String nome= rs.getString("nome");
+	 			        	Date date= rs.getDate("data");
+	 			        	String autore=rs.getString("autore");
+	 			        	String lingua=rs.getString("lingua");
+	 			        	String utente=rs.getString("user");
+	 			        	 
+	 			     Opera tempopera= new Opera (id,nome,date,autore,lingua,utente);
+	 			     
+	 			        	temp.add(tempopera);
+	 			       }
+	 			         
+	 			        ResultSet is =Database.selectRecord("pub", "1");
+	 			        temp2= new ArrayList<Opera>(); 
+	 			        
+	 			         while(is.next()){ 
+	 			        	 int id= is.getInt("id_op");
+	 			        	String nome= is.getString("nome");
+	 			        	Date date= is.getDate("data");
+	 			        	String autore=is.getString("autore");
+	 			        	String lingua=is.getString("lingua");
+	 			        	String utente=is.getString("user");
+	 			        	 
+	 			     Opera tempopera= new Opera (id,nome,date,autore,lingua,utente);
+	 			     
+	 			        	temp2.add(tempopera);
+	 			       }
+	 			     
+	 			         
+	 			    Database.close();
+	 			      }catch(NamingException e)
+	 			      {     
+	 			      } catch (SQLException e) {
+	 			      } catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 	    		 
 	    		 /* lo passo a data */
 	    		 
-	    		 data.put("index", 0);
-	 	        data.put("lista_opere", lista_opere);
+				
+				
+	 	        data.put("lista_opere", temp);
+	 	        data.put("lista_opere_all", temp2);
+	 	        data.put("index", 0);
 	 	        
 	 	        
 	 	        

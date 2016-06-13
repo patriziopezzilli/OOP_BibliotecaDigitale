@@ -3,7 +3,10 @@ package biblioteca.Model.DAO;
 import java.util.List;
 
 import biblioteca.Model.Utente;
-
+/**
+ * @author Luca
+ *
+ */
 public interface UtenteDAO_Interface {
 	
 	public static void promuovi_avanzato(){

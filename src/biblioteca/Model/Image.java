@@ -1,22 +1,27 @@
 package biblioteca.Model;
 
-import java.sql.Blob;
+/**
+ * @author Stefano
+ *
+ */
 
 public class Image {
 		
 	int id;
 	int indice;
-	Blob file;
+	String path;
 	int id_pub;
+	boolean revisionato;
 	
 	
 	
-	public Image(int id, int indice, Blob file, int id_pub) {
+	public Image(int id, int indice, String path, int id_pub, boolean res) {
 		super();
 		this.id = id;
 		this.indice = indice;
-		this.file = file;
+		this.path = path;
 		this.id_pub = id_pub;
+		this.revisionato= res;
 	}
 	
 	
@@ -32,17 +37,21 @@ public class Image {
 	public void setIndice(int indice) {
 		this.indice = indice;
 	}
-	public Blob getFile() {
-		return file;
+	public String getpath() {
+		return path;
 	}
-	public void setFile(Blob file) {
-		this.file = file;
+	public void setpath(String path) {
+		this.path = path;
 	}
 	public int getId_pub() {
 		return id_pub;
 	}
-	public void setId_pub(int id_pub) {
-		this.id_pub = id_pub;
+	
+	public void setRev(boolean t) {
+		this.revisionato = t;
+	}
+	public boolean getRev() {
+		return revisionato;
 	}
 	
 	

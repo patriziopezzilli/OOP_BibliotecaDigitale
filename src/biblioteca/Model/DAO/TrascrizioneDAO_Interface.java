@@ -1,5 +1,8 @@
 package biblioteca.Model.DAO;
-
+/**
+ * @author Stefano
+ *
+ */
 public interface TrascrizioneDAO_Interface {
 	
 	

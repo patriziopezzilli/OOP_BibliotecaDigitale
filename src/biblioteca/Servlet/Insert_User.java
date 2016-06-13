@@ -24,12 +24,12 @@ import biblioteca.Util.DataUtil;
 import biblioteca.Util.Database;
 import biblioteca.Util.FreeMarker;
 import biblioteca.Util.SecurityLayer;
-
+/**
+ * @author Patrizio
+ *
+ */
 public class Insert_User extends HttpServlet{
 
-	 /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
     
 	    private void action_error(HttpServletRequest request, HttpServletResponse response) throws IOException {

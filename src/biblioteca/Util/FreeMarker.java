@@ -15,6 +15,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 /**
  * @author Patrizio
+ * @author Luca
+ * @author Stefano
  *
  */
 public class FreeMarker {

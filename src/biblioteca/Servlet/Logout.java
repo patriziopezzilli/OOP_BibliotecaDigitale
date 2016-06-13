@@ -13,7 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import biblioteca.Util.FreeMarker;
 import biblioteca.Util.SecurityLayer;
-
+/**
+ * @author Luca
+ *
+ */
 public class Logout extends HttpServlet {
 	
 	  Map<String,Object> data= new HashMap<String,Object>();

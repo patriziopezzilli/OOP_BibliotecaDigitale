@@ -1,7 +1,10 @@
 package biblioteca.Model;
 
 import java.util.Date;
-
+/**
+ * @author Stefano
+ *
+ */
 public class Opera {
 		
 	int id;

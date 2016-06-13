@@ -1,5 +1,8 @@
 package biblioteca.Model;
-
+/**
+ * @author Stefano
+ *
+ */
 public class Trascrizione {
 	
 	int id;

@@ -2,7 +2,10 @@
  * 
  */
 package biblioteca.Model;
-
+/**
+ * @author Stefano
+ *
+ */
 import java.sql.Date;
 /**
  * @author Patrizio

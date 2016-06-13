@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 /**
  * @author Patrizio
+ * @author Luca	
+ * @author Stefano
  *
  */
 public class SecurityLayer {

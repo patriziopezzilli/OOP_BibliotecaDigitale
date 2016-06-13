@@ -6,9 +6,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import biblioteca.Util.Database;
-
+/**
+ * @author Stefano
+ *
+ */
 public class TrascrizioneDAO implements TrascrizioneDAO_Interface {
-
+	
+	 /**
+     * dato l'indice, l'id dell'opera e il contenuto inserisce la trascrizione 
+     * @param indice   indice della trascrizione da inserire
+     * @param idd      id dell'opera associata alla trascrizione
+     * @param textarea contenuto della trascrizione da inserire
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void insert(int indice, int idd, String textarea) throws Exception {
 
 		Database.connect();
@@ -22,7 +33,7 @@ public class TrascrizioneDAO implements TrascrizioneDAO_Interface {
 			temp.put("indice", indice);
 			temp.put("contenuto", textarea);
 			temp.put("id_pub", idd);
-			temp.put("revisionato", 0);
+			temp.put("validato", 0);
 			Database.insertRecord("trascrizioni", temp);
 
 		} else {
@@ -46,6 +57,13 @@ public class TrascrizioneDAO implements TrascrizioneDAO_Interface {
 
 	}
 	
+	 /**
+     * permette di settare a true il booleano relativo alla colonna "valida" della trascrizione  
+     * @param indice   indice della trascrizione da eliminare
+     * @param idd      id dell'opera associata alla trascrizione
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void valida(int indice, int idd) throws Exception{
 		
 		Database.connect();
@@ -55,6 +73,14 @@ public class TrascrizioneDAO implements TrascrizioneDAO_Interface {
 		Database.close();
 	}
 	
+	
+	 /**
+     * cancella, dato l'indice e l'id, la relativa trascrizione  
+     * @param indice   indice della trascrizione da eliminare
+     * @param idd      id dell'opera associata alla trascrizione
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void delete(int indice, int idd) throws Exception{
 		
 		Database.connect();

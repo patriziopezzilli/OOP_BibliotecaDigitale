@@ -28,7 +28,10 @@ import biblioteca.Util.DataUtil;
 import biblioteca.Util.Database;
 import biblioteca.Util.FreeMarker;
 import biblioteca.Util.SecurityLayer;
-
+/**
+ * @author Luca
+ *
+ */
 public class Success extends HttpServlet{
 
 	

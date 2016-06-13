@@ -4,8 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import biblioteca.Util.Database;
-
+/**
+ * @author Patrizio
+ *
+ */
 public class ImageDAO implements ImageDAO_Interface {
+	
+	 /**
+     * cancella, dato l'indice e l'id, la relativa immagine  
+     * @param indice   indice dell'immagine da eliminare
+     * @param idd      id dell'opera associata all'immagine
+     * @return
+     * @throws java.sql.SQLException
+     */
 	
 	public static void delete_image(int indice, int idd) throws Exception{
 		 Database.connect();
@@ -13,6 +24,13 @@ public class ImageDAO implements ImageDAO_Interface {
 	     Database.close();
 	}
 	
+	 /**
+     * dato l'id e l'indice dell'immagine, setta il booleano "revisiona" a true
+     * @param indice   indice dell'immagine da revisionare
+     * @param idd      id dell'opera associata all'immagine
+     * @return
+     * @throws java.sql.SQLException
+     */
 	public static void revisiona(int indice, int idd) throws Exception{
 		
 		 Database.connect();

@@ -68,13 +68,7 @@ public class Backoffice extends HttpServlet {
 	    		 
 	    		 
 	    		 /**
-	    		  * 
-	    		  * 
-	    		  * 
 	    		  * Gestione Opere
-	    		  * 
-	    		  * 
-	    		  * 
 	    		  */
 	    		 
 	    		 if(!isNull(request.getParameter("elimina"))){
@@ -89,15 +83,9 @@ public class Backoffice extends HttpServlet {
 	    			 response.sendRedirect("detail?id="+ id +"&index="+0);
 	    		 }
 	    		 
-	    		 /**
-	    		  * 
-	    		  * 
-	    		  * 
+	    		 /*****************
 	    		  * Gestione Utenza
-	    		  * 
-	    		  * 
-	    		  * 
-	    		  */
+	    		  *****************/
 	    		 
 	    		 if(!isNull(request.getParameter("avanzato"))){
 	    			 
