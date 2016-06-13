@@ -33,13 +33,11 @@ import biblioteca.Util.SecurityLayer;
  *
  */
 public class Uploadform extends HttpServlet {
-	
-	
+
 	/*
 	 * uso il parametro "data" in modo globale, per utilizzarlo sia nel GET che nel POST 
 	 */
-	
-	
+
 	Map<String,Object> data= new HashMap<String,Object>();
     
 	 private static final long serialVersionUID = 1L;
@@ -78,6 +76,7 @@ public class Uploadform extends HttpServlet {
 
 	     @Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException {
+	    	 
 	    	 // checks if the request actually contains upload file
 	    	 Map<String,Object> map= new HashMap<String,Object>();
 	         if (!ServletFileUpload.isMultipartContent(request)) {
@@ -143,21 +142,8 @@ public class Uploadform extends HttpServlet {
 			}
 	         
 	         data.put("messaggio", "Upload effettuato correttamente!");
-			  FreeMarker.process("uploadform.html", data, response, getServletContext());
+			 FreeMarker.process("uploadform.html", data, response, getServletContext());
 
 
 		}
-
-	    
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Servlet per la gestione del profilo personale";
-	    }
-	    
 }

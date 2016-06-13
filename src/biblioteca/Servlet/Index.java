@@ -57,7 +57,6 @@ public class Index extends HttpServlet{
 					try {
 						test = DataUtil.getUsername((String) s.getAttribute("username"));
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
@@ -68,13 +67,11 @@ public class Index extends HttpServlet{
 		    		 try {
 						lista_opere= OperaDAO.returnList();
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		    		 
-		    		 /* lo passo a data */
+		    		 /* Riempio la mappa */
 		    		 
-		    		
 		 	        data.put("lista_opere", lista_opere);
 		 	        data.put("test", test);
 		 	        data.put("index", 0);
@@ -87,7 +84,6 @@ public class Index extends HttpServlet{
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 	        
 	            HttpSession s = SecurityLayer.checkSession(request);
-
 
    		     String email = request.getParameter("email_login");
              String pass = request.getParameter("password_login");
@@ -110,31 +106,29 @@ public class Index extends HttpServlet{
 				
 			}
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
            System.out.println(userid);
-            //... VALIDAZIONE IDENTITA'...
-            //... IDENTITY CHECKS ...
-            
-          
-                //se la validazione ha successo
-                //if the identity validation succeeds
-                //carichiamo lo userid dal database utenti
-                //load userid from user database
+           
+           	/**	... VALIDAZIONE IDENTITA'...
+           		... IDENTITY CHECKS ...
+           
+                se la validazione ha successo
+                if the identity validation succeeds
+                carichiamo lo userid dal database utenti
+               load userid from user database   **/
+           
                 SecurityLayer.createSession(request, email , userid);
                 data.put("session",email);
                 try {
 					data.put("test", DataUtil.getUsername(email));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
                 
                 List<Opera> lista_opere= new ArrayList<Opera>();
+                
                 /* inserisco lista in lista_opere */
-	    		 
-	    		 
 	    		List<Opera> temp= null;
 	    		List<Opera> temp2= null;
 	 	    	try{
@@ -179,27 +173,22 @@ public class Index extends HttpServlet{
 	 			      {     
 	 			      } catch (SQLException e) {
 	 			      } catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 	    		 
-	    		 /* lo passo a data */
-	    		 
-				
-				
+	    		 /* Riempio la mappa */
 	 	        data.put("lista_opere", temp);
 	 	        data.put("lista_opere_all", temp2);
 	 	        data.put("index", 0);
 	 	        
 	 	        
+	 	        /* metodo che permette di inserire il ruolo nel data
+	 	        in modo da gestirlo meglio con freemarker  */
 	 	        
-	 	        // metodo che permette di inserire il ruolo nel data
-	 	        //in modo da gestirlo meglio con freemarker
 	 	       int gruppo=0;
 	 	        try {
 					 gruppo= UtenteDAO.getGroup(email);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	 	        
@@ -207,10 +196,8 @@ public class Index extends HttpServlet{
 	 	        
 	 	        System.out.print(data.get("gruppo"));
 
-	 	        
                 FreeMarker.process("list_title.html", data, response, getServletContext());
            
-               
               } 
              
              if(!isNull(email_reg)){
@@ -230,8 +217,6 @@ public class Index extends HttpServlet{
            
            Database.insertRecord("users",map);
                
-              
-               
            FreeMarker.process("index.html", data, response, getServletContext());
                    
             try {
@@ -244,56 +229,9 @@ public class Index extends HttpServlet{
        } catch (SQLException ex) {
            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
        } catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-             
-       
              }
 	    }
 
-	    
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Servlet per la gestione della home";
-	    }
- private List<Opera> returnList() throws Exception{
-	    	
-	    	List<Opera> temp= new ArrayList<Opera>();
-	    	
-
-	    	try{
-
-				 Database.connect();
-			        
-			         ResultSet rs =Database.selectRecord("pub","pubblicato=1");
-			       
-			         while(rs.next()){ 
-			        	 int id= rs.getInt("id_op");
-			        	String nome= rs.getString("nome");
-			        	Date data= rs.getDate("data");
-			        	String autore=rs.getString("autore");
-			        	String lingua=rs.getString("lingua");
-			        	String utente=rs.getString("user");
-			        	 
-			        	Opera tempopera= new Opera (id,nome,data,autore,lingua,utente);
-			        	temp.add(tempopera);
-			       }
-			           
-			         Database.close();
-			      }catch(NamingException e)
-			      {     
-			      } catch (SQLException e) {
-			      }
-	    	
-			        return temp; 
-	    	
-	    	
-	    }
 	}

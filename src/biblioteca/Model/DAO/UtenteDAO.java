@@ -97,19 +97,15 @@ public class UtenteDAO implements UtenteDAO_Interface{
 		 Database.close();
 	}
 	
-	/*
-	  * data l'email restituisce l'id del gruppo a cui appartiene
-	  * 1 - Amministratore
+	/**
+     * dato un'email restituisce l'id del gruppo di appartenenza
+     * 1 - Amministratore
 	  * 2 - UtenteBase
 	  * 3 - Trascrittore
 	  * 4 - RevisoreTrascrizioni
 	  * 5 - Aquisitore
 	  * 6 - RevisoreAquisizioni
 	  * 7 - UtenteAvanzato
-	  */
-	
-	/**
-     * dato un'email restituisce l'id del gruppo di appartenenza
      * @param email   email dell'utente
      * @return int
      * @throws java.sql.SQLException
@@ -156,15 +152,12 @@ public class UtenteDAO implements UtenteDAO_Interface{
 		        	Utente temputente= new Utente (email,nome,cognome,citta,annonascita,gruppo);
 		        	temp2.add(temputente);
 		       }
-		        
-		                   
+		                
 		      }catch(NamingException e)
 		      {     
 		      } catch (SQLException e) {
 		      }
     	
 		        return temp2; 
-    	
-    	
     }
 }

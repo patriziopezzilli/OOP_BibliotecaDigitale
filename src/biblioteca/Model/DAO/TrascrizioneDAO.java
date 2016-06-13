@@ -38,11 +38,6 @@ public class TrascrizioneDAO implements TrascrizioneDAO_Interface {
 
 		} else {
 
-			// if(rs.next()){
-			// Database.deleteRecord("trascrizioni", "indice="+indice+"&&
-			// id_pub="+idd);
-			// String contenuto_editor=
-			// request.getParameter("contenuto_editor");
 			Map<String, Object> temp2 = new HashMap<String, Object>();
 
 			temp2.put("contenuto", textarea);
@@ -51,10 +46,9 @@ public class TrascrizioneDAO implements TrascrizioneDAO_Interface {
 			else {
 				System.out.println("update non fatto");
 			}
-
 		}
+		
 		Database.close();
-
 	}
 	
 	 /**
@@ -87,5 +81,4 @@ public class TrascrizioneDAO implements TrascrizioneDAO_Interface {
 		Database.deleteRecord("trascrizioni", "indice='" + indice + "' AND id_pub = '" + idd + "'");
 		Database.close();
 	}
-
 }

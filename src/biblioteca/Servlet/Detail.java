@@ -43,8 +43,6 @@ import biblioteca.Util.SecurityLayer;
  *
  */
 
-
-
 @MultipartConfig(maxFileSize = 56177215) // upload file's size up to 16MB
 
 public class Detail extends HttpServlet {
@@ -67,70 +65,79 @@ public class Detail extends HttpServlet {
 		String contenuto_editor2= null;
 	    String nome = null;
 		
-	 // metodo che permette di inserire il ruolo nel data
-	        //in modo da gestirlo meglio con freemarker
+	 /** metodo che permette di inserire il ruolo nel data
+	    in modo da gestirlo meglio con freemarker   **/
+	    
 	       int gruppo=0;
 	        try {
 			 gruppo= UtenteDAO.getGroup((String)s.getAttribute("username"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+	        } catch (Exception e) {
 			e.printStackTrace();
-		}
+	        }
 	        
 	       data.put("gruppo",gruppo);
 	   
-	 // Elimina immagine relativa all'indice corrente
-	    if (!isNull(request.getParameter("elimina"))) {
+	       /* Elimina immagine relativa all'indice corrente */
+	       
+	       if (!isNull(request.getParameter("elimina"))) {
 	    	
-	     int idd = Integer.parseInt(request.getParameter("idd"));
-	     int indice = Integer.parseInt(request.getParameter("indice"));
+	    	   int idd = Integer.parseInt(request.getParameter("idd"));
+	    	   int indice = Integer.parseInt(request.getParameter("indice"));
 
-	     data.put("id", idd);
-	     data.put("nomeopera", nome);
-	     data.put("index", indice);
+	    	   data.put("id", idd);
+	    	   data.put("nomeopera", nome);
+	    	   data.put("index", indice);
 
-	     ImageDAO.delete_image(indice, idd);
+	    	   ImageDAO.delete_image(indice, idd);
 
-	     response.sendRedirect("detail?id=" + data.get("id") + "&index=" + data.get("index"));
-	    }
+	    	   response.sendRedirect("detail?id=" + data.get("id") + "&index=" + data.get("index"));
+	       }
 
-	    // Mette l'opera tra i file revisionati tramite un booleano
-	    if (!isNull(request.getParameter("revisiona"))) {
-	     int idd = Integer.parseInt(request.getParameter("idd"));
-	     int indice = Integer.parseInt(request.getParameter("indice"));
+	     /* Mette l'opera tra i file revisionati tramite un booleano */
+	       
+	       if (!isNull(request.getParameter("revisiona"))) {
+	    	   
+	    	   int idd = Integer.parseInt(request.getParameter("idd"));
+	    	   int indice = Integer.parseInt(request.getParameter("indice"));
 
-	     data.put("id", idd);
-	     data.put("nomeopera", nome);
-	     data.put("index", indice);
+	    	   data.put("id", idd);
+	    	   data.put("nomeopera", nome);
+	    	   data.put("index", indice);
 
-	     ImageDAO.revisiona(indice, idd);
+	    	   ImageDAO.revisiona(indice, idd);
 
-	     response.sendRedirect("detail?id=" + data.get("id") + "&index=" + data.get("index"));
-	    }
+	    	   response.sendRedirect("detail?id=" + data.get("id") + "&index=" + data.get("index"));
+	       }
 		
-	    if(!isNull(request.getParameter("next"))){
-	    	 int idd= Integer.parseInt(request.getParameter("idd"));
-			 int indice= Integer.parseInt(request.getParameter("indice"));
-			 
-			 data.put("id", idd);
-			  data.put("nomeopera", nome);
-			    data.put("index", indice+1);
-			    response.sendRedirect("detail?id="+ data.get("id") +"&index="+data.get("index"));
-	    	
-	    }
-	    
-	    if(!isNull(request.getParameter("prev"))){
+		/* Avanzo alla pagina successiva */
+
+	       if(!isNull(request.getParameter("next"))){
 	    	
 	    	 int idd= Integer.parseInt(request.getParameter("idd"));
 			 int indice= Integer.parseInt(request.getParameter("indice"));
 			 
 			 data.put("id", idd);
-			  data.put("nomeopera", nome);
-			    data.put("index", indice-1);
-			    response.sendRedirect("detail?id="+ data.get("id") +"&index="+data.get("index"));
+			 data.put("nomeopera", nome);
+			 data.put("index", indice+1);
+			 response.sendRedirect("detail?id="+ data.get("id") +"&index="+data.get("index"));
 	    	
+	       }
+	    
+		/* Torno alla pagina precedente */
+
+	       if(!isNull(request.getParameter("prev"))){
+	    	
+	    	 int idd= Integer.parseInt(request.getParameter("idd"));
+			 int indice= Integer.parseInt(request.getParameter("indice"));
+			 
+			 data.put("id", idd);
+			 data.put("nomeopera", nome);
+			 data.put("index", indice-1);
+			 response.sendRedirect("detail?id="+ data.get("id") +"&index="+data.get("index"));
 	    }
 	    
+	   /* Vado alla pagina relativa all'upload dell'immagine */
+
 	    if(!isNull(request.getParameter("upload"))){
 	    	
 	    	 int idd= Integer.parseInt(request.getParameter("idd"));
@@ -146,6 +153,8 @@ public class Detail extends HttpServlet {
 
 	    }
 	    
+	    /* Inserisco testo trascrizione su DB */
+
 	    if(!isNull(request.getParameter("aggiornaDB"))){
 	    		
 	    	 String textarea= request.getParameter("textarea");
@@ -162,23 +171,24 @@ public class Detail extends HttpServlet {
 
 	    }
 	    
-	    
 	        data.put("test", test);
 	        String path= null;
 	        int index= Integer.parseInt(request.getParameter("index"));
 		    int id=Integer.parseInt(request.getParameter("id")) ;
 	      try {
+	    	  
 			Database.connect();
 			ResultSet rs= Database.selectRecord("pub", "id_op="+id);
 			while( rs.next() ){
 				 nome= rs.getString("nome");
 			}
+			
 			Database.close();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	      
 	      /* Prendo immagine da mostrare a video (se esiste) */
 	      Database.connect();
 	      ResultSet cs= Database.selectRecord("immagini", "indice="+index+"&&id_pub="+id+"");
@@ -187,6 +197,7 @@ public class Detail extends HttpServlet {
 	    	path=cs.getString("path");
 	    	
 	      }
+	      
 	      /* Prendo TRASCRIZIONE da mostrare a video (se esiste) */
 	      ResultSet sss= Database.selectRecord("trascrizioni", "indice="+index+"&&id_pub="+id+"");
 	      while(sss.next()){
@@ -195,7 +206,6 @@ public class Detail extends HttpServlet {
 	    	
 	      }
 	      
-	     
 	      data.put("contenuto_editor", contenuto_editor2);
 	      data.put("path",path);
 	      data.put("id", id);
@@ -205,6 +215,7 @@ public class Detail extends HttpServlet {
 	      /* Metodo che prende la lista del num di pag di un 
 	       *  Opera specifica
 	       */
+	      
 	      List listapagine= new ArrayList();
 	      int numero=0;
 	      ResultSet pagine= Database.selectRecord("pub","id_op="+id );
@@ -223,11 +234,7 @@ public class Detail extends HttpServlet {
 	}
 
 	private void action_error(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
 	}
-
-	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -238,7 +245,6 @@ public class Detail extends HttpServlet {
 		try {
 			processRequest(request, response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -253,7 +259,6 @@ public class Detail extends HttpServlet {
 		try {
 			processRequest(request, response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

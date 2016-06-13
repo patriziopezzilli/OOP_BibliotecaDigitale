@@ -57,13 +57,11 @@ public class Success extends HttpServlet{
 					try {
 						test = DataUtil.getUsername((String) s.getAttribute("username"));
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
-		    		 /* lo passo a data */
-		    		 
-		    		
+		    		 /* Riempio la mappa da passare alla View */
+
 		 	        data.put("test", test);
 	                FreeMarker.process("success.html", data, response, getServletContext());
 	                
@@ -75,21 +73,7 @@ public class Success extends HttpServlet{
 	        
 	    	 /* Method POST for Img */
 		    
-		    	 FreeMarker.process("index.html", data, response, getServletContext());
-		   
-			 
+		    FreeMarker.process("index.html", data, response, getServletContext());
 	     }
 
-	    
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Servlet per la gestione della home";
-	    }
- 
 	}

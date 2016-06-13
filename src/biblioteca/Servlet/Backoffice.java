@@ -66,10 +66,7 @@ public class Backoffice extends HttpServlet {
 	    	 HttpSession s = SecurityLayer.checkSession(request);
 	    	 if(s!=null){
 	    		 
-	    		 
-	    		 /**
-	    		  * Gestione Opere
-	    		  */
+	    		 /* Gestione Opere */
 	    		 
 	    		 if(!isNull(request.getParameter("elimina"))){
 	    			 
@@ -83,9 +80,7 @@ public class Backoffice extends HttpServlet {
 	    			 response.sendRedirect("detail?id="+ id +"&index="+0);
 	    		 }
 	    		 
-	    		 /*****************
-	    		  * Gestione Utenza
-	    		  *****************/
+	    		 /* Gestione Utenza */
 	    		 
 	    		 if(!isNull(request.getParameter("avanzato"))){
 	    			 
@@ -126,29 +121,27 @@ public class Backoffice extends HttpServlet {
 	    		 List<Opera> lista_opere= new ArrayList<Opera>();
 	    		 List<Utente> lista_utenti= new ArrayList<Utente>();
 
-	    		 /* inserisco lista in lista_opere */
+	    		 /* Inserimento lista in lista_opere */
 	    		 
 	    		 lista_opere= OperaDAO.returnList();
 	    		 lista_utenti= UtenteDAO.returnListutenti();
-	    		 /* lo passo a data */
 	    		 
-	    		 String test= DataUtil.getUsername((String) s.getAttribute("username"));
+	    		 /* Passaggio di dati alla mappa "data" */
+	    		 
+	    		String test= DataUtil.getUsername((String) s.getAttribute("username"));
 	 	        data.put("test", test);
 	 	        data.put("lista_opere", lista_opere);
-	 	       data.put("lista_utenti", lista_utenti);
+	 	        data.put("lista_utenti", lista_utenti);
 	 	       
-	 	      
-	 	        
 	 	        System.out.print(data.get("gruppo"));
 	 	       
 	 	        FreeMarker.process("backoffice.html", data, response, getServletContext());
-	    	 }else 	 FreeMarker.process("index.html", data, response, getServletContext());
+	 	        
+	    	 } else 	 
+	    		 FreeMarker.process("index.html", data, response, getServletContext());
+	    		}
 
-	    	 
-	       
-	}
-
-	    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+	    
 	    /**
 	     * Handles the HTTP <code>GET</code> method.
 	     *
@@ -186,20 +179,4 @@ public class Backoffice extends HttpServlet {
 				e.printStackTrace();
 			}
 	    }
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Short description";
-	    }// </editor-fold>
-
-	    
-	    
-	    
-	    	
-	
 	}

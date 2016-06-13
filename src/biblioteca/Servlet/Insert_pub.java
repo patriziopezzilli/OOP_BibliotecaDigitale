@@ -43,8 +43,8 @@ public class Insert_pub extends HttpServlet{
 	    private void action_error(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	Map<String,Object> data= new HashMap<String,Object>();
 
-	    	//assumiamo che l'eccezione sia passata tramite gli attributi della request
-	        //we assume that the exception has been passed using the request attributes
+	    	/*assumiamo che l'eccezione sia passata tramite gli attributi della request
+	        we assume that the exception has been passed using the request attributes */
 	        Exception exception = (Exception) request.getAttribute("exception");
 	        String message;
 	        if (exception != null && exception.getMessage() != null) {
@@ -57,12 +57,6 @@ public class Insert_pub extends HttpServlet{
 	        
 	      
 	    }
-	          
-	    
-	    
-	    
-	   
-	          
 	          
 	 /**
 	     * Caricamento pagina di Home
@@ -84,7 +78,6 @@ public class Insert_pub extends HttpServlet{
 					try {
 						test = DataUtil.getUsername((String) s.getAttribute("username"));
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		 	        data.put("test", test);
@@ -92,8 +85,6 @@ public class Insert_pub extends HttpServlet{
 	                
 	            } else FreeMarker.process("index.html", data, response, getServletContext());
 	    
-	    	
-	       
 	    }
 
 	     @Override
@@ -121,21 +112,18 @@ public class Insert_pub extends HttpServlet{
               try {
 				Database.connect();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
               
              try {
 				Database.insertRecord("pub", data);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
              
              try {
 				Database.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
              data.put("session",s.getAttribute("username"));
@@ -143,7 +131,6 @@ public class Insert_pub extends HttpServlet{
 				try {
 					test = DataUtil.getUsername((String) s.getAttribute("username"));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -173,7 +160,6 @@ public class Insert_pub extends HttpServlet{
 	 			      {     
 	 			      } catch (SQLException e) {
 	 			      } catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				
@@ -184,20 +170,5 @@ public class Insert_pub extends HttpServlet{
              FreeMarker.process("list_title.html", data, response, getServletContext());
              
 	    }
-
-	    
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Servlet per la gestione della home";
-	    }
-	    
-	    
-	    
 
 	}

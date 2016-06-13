@@ -37,7 +37,6 @@ public class Userprofile extends HttpServlet {
 	
 	Map<String,Object> data= new HashMap<String,Object>();
     
-	  
 	 /**
 	     * Caricamento pagina di Home
 	     *
@@ -59,7 +58,6 @@ public class Userprofile extends HttpServlet {
 					try {
 						test = DataUtil.getUsername((String) s.getAttribute("username"));
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					Utente profilo= null;
@@ -89,7 +87,6 @@ public class Userprofile extends HttpServlet {
 						Database.close();
 					
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		 	        
@@ -106,15 +103,4 @@ public class Userprofile extends HttpServlet {
 	    	 FreeMarker.process("userprofile.html", data, response, getServletContext());
 	    }
 
-	    
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Servlet per la gestione del profilo personale";
-	    }
 	}

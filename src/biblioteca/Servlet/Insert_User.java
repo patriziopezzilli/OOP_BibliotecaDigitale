@@ -35,8 +35,9 @@ public class Insert_User extends HttpServlet{
 	    private void action_error(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	Map<String,Object> data= new HashMap<String,Object>();
 
-	    	//assumiamo che l'eccezione sia passata tramite gli attributi della request
-	        //we assume that the exception has been passed using the request attributes
+	    	/* assumiamo che l'eccezione sia passata tramite gli attributi della request
+	        we assume that the exception has been passed using the request attributes */
+	    	
 	        Exception exception = (Exception) request.getAttribute("exception");
 	        String message;
 	        if (exception != null && exception.getMessage() != null) {
@@ -46,8 +47,7 @@ public class Insert_User extends HttpServlet{
 	        }
 	        data.put("errore", message);
 	        FreeMarker.process("404page.html", data, response, getServletContext());
-	        
-	      
+	  
 	    }
 	          
 	 /**
@@ -70,16 +70,12 @@ public class Insert_User extends HttpServlet{
 					try {
 						test = DataUtil.getUsername((String) s.getAttribute("username"));
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		 	        data.put("test", test);
 	                FreeMarker.process("aggiungipers.html", data, response, getServletContext());
 	                
 	            } else FreeMarker.process("index.html", data, response, getServletContext());
-	    
-	    	
-	       
 	    }
 
 	     @Override
@@ -96,8 +92,6 @@ public class Insert_User extends HttpServlet{
 	    	  String citta= request.getParameter("citta");
 	    	  int gruppo= 1;
 
-	    	  
-             
              data.put("email",email);
              data.put("password", crypt(password));
              data.put("nome",nome);
@@ -109,29 +103,25 @@ public class Insert_User extends HttpServlet{
              try {
 				Database.connect();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-             System.out.print(data.get("nome"));
             try {
 				Database.insertRecord("users", data);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
             
             try {
 				Database.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+            
             data.put("session",s.getAttribute("username"));
             String test = null;
 				try {
 					test = DataUtil.getUsername((String) s.getAttribute("username"));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -165,27 +155,8 @@ public class Insert_User extends HttpServlet{
 						e.printStackTrace();
 					}
 				
-				
-				
 				data.put("lista_opere", temp);
 	 	        data.put("test", test);
             FreeMarker.process("list_title.html", data, response, getServletContext());
-            
 	    }
-
-	    
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Servlet per la gestione della home";
-	    }
-	    
-	    
-	    
-
 	}

@@ -36,8 +36,9 @@ public class List_Title extends HttpServlet {
 	    private void action_error(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	   	 Map data= new HashMap();
 
-	    	//assumiamo che l'eccezione sia passata tramite gli attributi della request
-	        //we assume that the exception has been passed using the request attributes
+	    	/* assumiamo che l'eccezione sia passata tramite gli attributi della request
+	        we assume that the exception has been passed using the request attributes  */
+	   	 
 	        Exception exception = (Exception) request.getAttribute("exception");
 	        String message;
 	        if (exception != null && exception.getMessage() != null) {
@@ -47,8 +48,6 @@ public class List_Title extends HttpServlet {
 	        }
 	        data.put("errore", message);
 	        FreeMarker.process("404page.html", data, response, getServletContext());
-	        
-	      
 	    }
 	    /**
 	     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -66,8 +65,7 @@ public class List_Title extends HttpServlet {
 	    	 if(s!=null){
 	    		
 	    		 /* inserisco lista in lista_opere */
-	    		 
-	    		 
+
 	    		List<Opera> temp= null;
 	    		List<Opera> temp2= null;
 	 	    	try{
@@ -112,7 +110,7 @@ public class List_Title extends HttpServlet {
 	 			      } catch (SQLException e) {
 	 			      }
 	    		 
-	    		 /* lo passo a data */
+	    		 /* Riempio la mappa da passare alla View */
 	    		 
 	    		 String test= DataUtil.getUsername((String) s.getAttribute("username"));
 	 	        data.put("test", test);
@@ -124,7 +122,6 @@ public class List_Title extends HttpServlet {
 	 	        try {
 					 gruppo= UtenteDAO.getGroup((String)s.getAttribute("username"));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	 	        
@@ -135,12 +132,8 @@ public class List_Title extends HttpServlet {
 	 	        FreeMarker.process("list_title.html", data, response, getServletContext());
 	    	 }else 	
 	    		 FreeMarker.process("index.html", data, response, getServletContext());
-
-	    	 
-	       
 	}
 
-	    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 	    /**
 	     * Handles the HTTP <code>GET</code> method.
 	     *
@@ -155,7 +148,6 @@ public class List_Title extends HttpServlet {
 	        try {
 				processRequest(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    }
@@ -174,20 +166,7 @@ public class List_Title extends HttpServlet {
 	        try {
 				processRequest(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    }
-
-	    /**
-	     * Returns a short description of the servlet.
-	     *
-	     * @return a String containing servlet description
-	     */
-	    @Override
-	    public String getServletInfo() {
-	        return "Short description";
-	    }// </editor-fold>
-
-	 
 	}

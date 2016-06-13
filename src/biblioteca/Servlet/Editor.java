@@ -39,7 +39,8 @@ public class Editor extends HttpServlet {
 
 		HttpSession s = SecurityLayer.checkSession(request);
 
-		// Mette la trascrizione tra i validati tramite un booleano
+		/* Mette la trascrizione tra i validati tramite un booleano */
+		
 		if (!isNull(request.getParameter("valida"))) {
 			int idd = Integer.parseInt(request.getParameter("idd"));
 			int indice = Integer.parseInt(request.getParameter("indice"));
@@ -52,7 +53,7 @@ public class Editor extends HttpServlet {
 			response.sendRedirect("detail?id=" + data.get("id") + "&index=" + data.get("index"));
 		}
 
-		// Elimina trascrizione relativa all'indice corrente
+		/* Elimina trascrizione relativa all'indice corrente  */
 		if (!isNull(request.getParameter("elimina"))) {
 			int idd = Integer.parseInt(request.getParameter("idd"));
 			int indice = Integer.parseInt(request.getParameter("indice"));
@@ -65,10 +66,8 @@ public class Editor extends HttpServlet {
 			response.sendRedirect("detail?id=" + data.get("id") + "&index=" + data.get("index"));
 		}
 		
-		
 		FreeMarker.process("editorTEI.html", data, response, getServletContext());
 		
-
 	}
 
 	/**
@@ -104,26 +103,26 @@ public class Editor extends HttpServlet {
 			data.put("nomeopera", nomeopera);
 			
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
-		/*****************/
-		
-		
 		if (s != null) {
+			
 			data.put("session", s.getAttribute("username"));
 			String test = null;
+			
 			try {
 				test = DataUtil.getUsername((String) s.getAttribute("username"));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			System.out.println(id);
 			System.out.println(index);
+			
 			try {
 				
+			     /* Recupero trascrizioni */
 				ResultSet rs = Database.selectRecord("trascrizioni", "id_pub=" + id + "&& indice=" + index);
 				while (rs.next()) {
 
@@ -133,12 +132,11 @@ public class Editor extends HttpServlet {
 				Database.close();
 
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 
-			/* lo passo a data */
-
+			/* Riempio la mappa da passare alla classe View */
 			data.put("contenuto", contenuto);
 			data.put("test", test);
 			data.put("index", index);
@@ -156,18 +154,7 @@ public class Editor extends HttpServlet {
 		try {
 			processRequest(request, response);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * Returns a short description of the servlet.
-	 *
-	 * @return a String containing servlet description
-	 */
-	@Override
-	public String getServletInfo() {
-		return "Servlet per la gestione dell'editor TEI";
 	}
 }

@@ -40,5 +40,4 @@ public class ImageDAO implements ImageDAO_Interface {
 	     Database.close();
 
 	}
-	
 }
