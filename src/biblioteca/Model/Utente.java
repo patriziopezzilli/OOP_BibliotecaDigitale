@@ -13,12 +13,12 @@ import java.sql.Date;
  */
 public class Utente {
 
-		String usermail;
-	    public String nome;
-	    String cognome;
-	    String citta;
-	    Date datanascita;
-	    int gruppo;
+	private String usermail;
+	private String nome;
+	private String cognome;
+	private String citta;
+	private Date datanascita;
+	private int gruppo;
 
 	    public Utente(String usermail, String nome, String cognome, String citta, Date datanascita, int gruppi) {
 	        this.usermail = usermail;

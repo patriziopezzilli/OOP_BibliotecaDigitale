@@ -7,12 +7,12 @@ import java.util.Date;
  */
 public class Opera {
 		
-	int id;
-	String nome;
-	Date data;
-	String autore;
-	String lingua;
-	String utente;
+	private int id;
+	private String nome;
+	private Date data;
+	private String autore;
+	private String lingua;
+	private String utente;
 	
 	
 	

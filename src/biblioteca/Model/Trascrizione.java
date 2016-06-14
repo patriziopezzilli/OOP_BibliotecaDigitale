@@ -5,11 +5,11 @@ package biblioteca.Model;
  */
 public class Trascrizione {
 	
-	int id;
-	int indice;
-	String contenuto;
-	int id_pub;
-	boolean validato;
+	private int id;
+	private int indice;
+	private String contenuto;
+	private int id_pub;
+	private boolean validato;
 	
 	
 	public Trascrizione(int id, int indice, String contenuto, int id_pub, boolean validato) {

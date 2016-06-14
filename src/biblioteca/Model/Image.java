@@ -7,11 +7,11 @@ package biblioteca.Model;
 
 public class Image {
 		
-	int id;
-	int indice;
-	String path;
-	int id_pub;
-	boolean revisionato;
+	private int id;
+	private int indice;
+	private String path;
+	private int id_pub;
+	private boolean revisionato;
 	
 	
 	
